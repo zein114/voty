@@ -103,6 +103,31 @@ return [
     'footer_copy' => '&copy; 2025 Voty. Tous droits réservés.',
     'brand_description' => 'Plateforme de Vote en Ligne Sécurisée',
 
+    // Index page
+    'logo_text' => 'Sécurité et transparence dans votre vote...',
+    'logo_text_technic' => 'Propulsé par le Web3',
+    'view_result' => 'Voir les résultats des élections',
+    'view_list' => 'Voir la liste des candidats',
+    'the_elected_positions' => 'Les postes élus sont :',
+    'vote_label' => 'Votez maintenant !!',
+    'input_select_vote' => 'Veuillez sélectionner votre choix',
+    'vote_button' => 'Voter',
+
+    // Noms des postes (utilisés comme clés depuis la BD)
+    'President' => 'Président',
+    'Vice President' => 'Vice-président',
+    'General Secretary' => 'Secrétaire général',
+    'Treasurer' => 'Trésorier',
+    'Head of Academic Committee' => "Responsable de la commission académique",
+    'Head of Cultural and Media Committee' => "Responsable de la commission culturelle et médiatique",
+    'Head of Sports Committee' => 'Responsable de la commission sportive',
+    'Head of Social Services Committee' => 'Responsable de la commission des services sociaux',
+    'Head of External Relations Committee' => 'Responsable des relations extérieures',
+    'Head of Organization and Discipline Committee' => "Responsable de l'organisation et de la discipline",
+    'Department Representative' => 'Représentant de département',
+    'Faculty / Institute Representative' => 'Représentant de faculté / institut',
+    'National Executive Board Member' => 'Membre du bureau exécutif national',
+
     // Language names
     'english' => 'English',
     'arabic' => 'العربية',

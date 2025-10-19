@@ -52,7 +52,7 @@ include 'includes/header.php';
     <div class="Elected-positions" id="elected-positions">
       <span class="title-elected-positions"><?php echo t('the_elected_positions', 'Les postes élus sont :') ?></span>
       <?php foreach($positions as $position): ?>
-        <span class="label-elected-position"><?php echo $position[$current_lang.'_name']; ?></span>
+        <span class="label-elected-position"><?php echo t($position['name'], $position['name']); ?></span>
       <?php endforeach; ?>
     </div>
 
@@ -61,8 +61,8 @@ include 'includes/header.php';
       <div class="grid-select-form" id="grid-select-form">
         <?php foreach($positions as $position): ?>
           <div class="select-vote-input">
-            <label for="<?php echo $position['en_name']; ?>"><?php echo $position[$current_lang.'_name']; ?></label>
-            <select name="<?php echo $position['en_name']; ?>" id="<?php echo $position['en_name']; ?>" class="vote-selected">
+            <label for="<?php echo 'position_' . $position['id']; ?>"><?php echo t($position['name'], $position['name']); ?></label>
+            <select name="<?php echo 'position_' . $position['id']; ?>" id="<?php echo 'position_' . $position['id']; ?>" class="vote-selected">
               <option value=""><?php echo t('input_select_vote' , 'Veuillez sélectionner votre choix'); ?></option>
               <?php 
               $candidates = get_candidate($pdo, $position['id']);

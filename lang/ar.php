@@ -102,6 +102,31 @@ return [
     'footer_copy' => '&copy; 2025 Voty. جميع الحقوق محفوظة',
     'brand_description' => 'منصة تصويت إلكتروني آمنة',
 
+    // Index page
+    'logo_text' => 'الأمان والشفافية في تصويتك...',
+    'logo_text_technic' => 'مدعوم بتقنية الويب3',
+    'view_result' => 'عرض نتائج الانتخابات',
+    'view_list' => 'عرض قائمة المرشحين',
+    'the_elected_positions' => 'المناصب المنتخبة هي:',
+    'vote_label' => 'صوّت الآن!!',
+    'input_select_vote' => 'يرجى اختيار خيارك',
+    'vote_button' => 'تصويت',
+
+    // أسماء المناصب (تستخدم كمفاتيح من قاعدة البيانات)
+    'President' => 'الرئيس',
+    'Vice President' => 'نائب الرئيس',
+    'General Secretary' => 'الأمين العام',
+    'Treasurer' => 'أمين الصندوق',
+    'Head of Academic Committee' => 'رئيس اللجنة الأكاديمية',
+    'Head of Cultural and Media Committee' => 'رئيس اللجنة الثقافية والإعلامية',
+    'Head of Sports Committee' => 'رئيس اللجنة الرياضية',
+    'Head of Social Services Committee' => 'رئيس لجنة الخدمات الاجتماعية',
+    'Head of External Relations Committee' => 'رئيس لجنة العلاقات الخارجية',
+    'Head of Organization and Discipline Committee' => 'رئيس لجنة التنظيم والانضباط',
+    'Department Representative' => 'ممثل القسم',
+    'Faculty / Institute Representative' => 'ممثل الكلية / المعهد',
+    'National Executive Board Member' => 'عضو المكتب التنفيذي الوطني',
+
     // Language names
     'english' => 'English',
     'arabic' => 'العربية',

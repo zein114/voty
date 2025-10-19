@@ -103,6 +103,31 @@ return [
     'footer_copy' => '&copy; 2025 Voty. All rights reserved.',
     'brand_description' => 'Secure Online Voting Platform',
 
+    // Index page
+    'logo_text' => 'Security and transparency in your vote...',
+    'logo_text_technic' => 'Powered by Web3',
+    'view_result' => 'View election results',
+    'view_list' => 'View the list of candidates',
+    'the_elected_positions' => 'The elected positions are:',
+    'vote_label' => 'Vote now!!',
+    'input_select_vote' => 'Please select your choice',
+    'vote_button' => 'Vote',
+
+    // Position names (used as keys from DB)
+    'President' => 'President',
+    'Vice President' => 'Vice President',
+    'General Secretary' => 'General Secretary',
+    'Treasurer' => 'Treasurer',
+    'Head of Academic Committee' => 'Head of Academic Committee',
+    'Head of Cultural and Media Committee' => 'Head of Cultural and Media Committee',
+    'Head of Sports Committee' => 'Head of Sports Committee',
+    'Head of Social Services Committee' => 'Head of Social Services Committee',
+    'Head of External Relations Committee' => 'Head of External Relations Committee',
+    'Head of Organization and Discipline Committee' => 'Head of Organization and Discipline Committee',
+    'Department Representative' => 'Department Representative',
+    'Faculty / Institute Representative' => 'Faculty / Institute Representative',
+    'National Executive Board Member' => 'National Executive Board Member',
+
     // Language names
     'english' => 'English',
     'arabic' => 'العربية',
