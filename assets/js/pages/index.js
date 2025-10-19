@@ -11,12 +11,3 @@ document.addEventListener("DOMContentLoaded", function () {
     logoutBtn.addEventListener("click", logout);
   }
 });
-
-const electedPositions = document.getElementById('elected-positions');
-electedPositions.lastElementChild.style.borderBottom = 'none';
-
-
-if ( !(countSelectInputs % 2 === 0 ) && window.innerWidth > 768 ) {
-  selectInputsForm.lastElementChild.style.width = '100%';
-  selectInputsForm.lastElementChild.style.marginLeft = '54%';
-}

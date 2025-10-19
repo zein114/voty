@@ -82,24 +82,6 @@ include 'includes/header.php';
     </form>
   </div>
 </div>
-<script>
-  const selectInputsForm = document.getElementById('grid-select-form');
-  const countSelectInputs = selectInputsForm.children.length;
-
-  if(<?php echo '\''.$current_lang.'\''; ?> == 'ar' && !(countSelectInputs % 2 === 0 ) && window.innerWidth > 768) {
-    selectInputsForm.lastElementChild.style.width = '100%';
-    selectInputsForm.lastElementChild.style.marginLeft = '0%';
-    selectInputsForm.lastElementChild.style.marginRight = '54%';
-  }
-  if ( <?php echo '\''.$current_lang.'\''; ?> == 'ar' ) {
-    const selectInputs = document.querySelectorAll('.vote-selected');
-
-    for (const input of selectInputs) {
-      input.style.backgroundPosition = 'left 16px center';
-    }
-  }
-
-</script>
 <script src="assets/js/utilities/utils.js" defer></script>
 <script src="assets/js/pages/index.js" defer></script>
 <?php include 'includes/footer.php'; ?>
