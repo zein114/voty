@@ -99,6 +99,10 @@ return [
     'login_failed' => 'Login failed',
     'password_requirements_not_met' => 'Password does not meet the requirements.',
 
+    //footer
+    'footer_copy' => '&copy; 2025 Voty. All rights reserved.',
+    'brand_description' => 'Secure Online Voting Platform',
+
     // Language names
     'english' => 'English',
     'arabic' => 'العربية',

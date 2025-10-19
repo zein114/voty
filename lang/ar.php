@@ -98,6 +98,10 @@ return [
     'login_failed' => 'فشل تسجيل الدخول',
     'password_requirements_not_met' => 'كلمة المرور لا تستوفي المتطلبات.',
 
+    // Footer
+    'footer_copy' => '&copy; 2025 Voty. جميع الحقوق محفوظة',
+    'brand_description' => 'منصة تصويت إلكتروني آمنة',
+
     // Language names
     'english' => 'English',
     'arabic' => 'العربية',

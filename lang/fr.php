@@ -99,6 +99,10 @@ return [
     'login_failed' => 'Échec de la connexion',
     'password_requirements_not_met' => 'Le mot de passe ne répond pas aux exigences.',
 
+    //foter
+    'footer_copy' => '&copy; 2025 Voty. Tous droits réservés.',
+    'brand_description' => 'Plateforme de Vote en Ligne Sécurisée',
+
     // Language names
     'english' => 'English',
     'arabic' => 'العربية',
