@@ -3,7 +3,7 @@
     flex-direction: column;
     background-color: #1a1a1a;
     padding: 0 13rem; /* Add 13rem padding on left and right */
-    min-height: 100dvh;
+    min-height: 80dvh;
 }
 
 .profile-header {
