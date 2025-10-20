@@ -33,6 +33,12 @@ const photoPreview = document.getElementById('photoPreview');
 const partyLogoPreview = document.getElementById('partyLogoPreview');
 const photoLabel = document.getElementById('photoLabel');
 const partyLogoLabel = document.getElementById('partyLogoLabel');
+// Custom dropdown elements for position
+const positionDropdown = document.getElementById('positionDropdown');
+const positionDropdownMenu = document.getElementById('positionDropdownMenu');
+const positionSelectedText = document.getElementById('positionSelectedText');
+const positionPlaceholder = (positionSelectedText && positionSelectedText.textContent ? positionSelectedText.textContent.trim() : '') || 'Select a position';
+const currentLang = (document.documentElement && document.documentElement.lang) ? document.documentElement.lang : 'fr';
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
@@ -55,6 +61,19 @@ function initEventListeners() {
     candidateForm.addEventListener('submit', handleSubmit);
     confirmDeleteBtn.addEventListener('click', handleDelete);
     
+    // Handle position dropdown selection
+    if (positionDropdown) {
+        positionDropdown.addEventListener('dropdown:select', (e) => {
+            try {
+                const { container, item, value } = e.detail || {};
+                if (!container || container !== positionDropdown) return;
+                const label = (item && item.textContent ? item.textContent.trim() : '') || positionPlaceholder;
+                idPositionInput.value = value || '';
+                if (positionSelectedText) positionSelectedText.textContent = label;
+            } catch (_) {}
+        });
+    }
+    
     // File upload previews
     photoInput.addEventListener('change', (e) => handleFilePreview(e, photoPreview, photoLabel));
     partyLogoInput.addEventListener('change', (e) => handleFilePreview(e, partyLogoPreview, partyLogoLabel));
@@ -76,13 +95,32 @@ async function loadPositions() {
 }
 
 function populatePositionsDropdown() {
-    idPositionInput.innerHTML = '<option value="">Select a position</option>';
+    if (!positionDropdownMenu) return;
+    const placeholder = positionPlaceholder;
+    positionDropdownMenu.innerHTML = '';
+    // Add placeholder/clear selection item
+    const placeholderItem = document.createElement('div');
+    placeholderItem.className = 'dropdown-item';
+    placeholderItem.setAttribute('data-value', '');
+    placeholderItem.textContent = placeholder;
+    positionDropdownMenu.appendChild(placeholderItem);
+
     positions.forEach(position => {
-        const option = document.createElement('option');
-        option.value = position.id;
-        option.textContent = position.name;
-        idPositionInput.appendChild(option);
+        const item = document.createElement('div');
+        item.className = 'dropdown-item';
+        item.setAttribute('data-value', String(position.id));
+        item.textContent = position.name;
+        positionDropdownMenu.appendChild(item);
     });
+
+    // Ensure selected text reflects current hidden input if any
+    const currentVal = idPositionInput.value;
+    if (currentVal) {
+        const match = positions.find(p => String(p.id) === String(currentVal));
+        if (match && positionSelectedText) positionSelectedText.textContent = match.name;
+    } else if (positionSelectedText) {
+        positionSelectedText.textContent = placeholder;
+    }
 }
 
 // Load candidates
@@ -133,13 +171,26 @@ function createCandidateCard(candidate) {
     const photoSrc = candidate.photo_path ? `../${candidate.photo_path}` : '../assets/images/candidates/profile/candidate-placeholder.png';
     const logoSrc = candidate.path_supporting_party_logo ? `../${candidate.path_supporting_party_logo}` : '../assets/images/candidates/party/party-placeholder.jpg';
     const positionName = candidate.position_name || 'No position';
+
+    let displayName = candidate.name;
+    let displayDesc = candidate.en_description;
+    if (currentLang === 'ar') {
+        displayName = candidate.ar_name || candidate.name;
+        displayDesc = candidate.ar_description || candidate.en_description;
+    } else if (currentLang === 'fr') {
+        displayName = candidate.name; // no separate fr name in schema
+        displayDesc = candidate.fr_description || candidate.en_description;
+    } else {
+        displayName = candidate.name;
+        displayDesc = candidate.en_description;
+    }
     
     return `
         <div class="candidate-card">
             <div class="candidate-header">
                 <img src="${photoSrc}" alt="${candidate.name}" class="candidate-photo">
                 <div class="candidate-info">
-                    <div class="candidate-name">${escapeHtml(candidate.name)}</div>
+                    <div class="candidate-name">${escapeHtml(displayName)}</div>
                     <div class="candidate-position">${escapeHtml(positionName)}</div>
                     <div class="candidate-party">
                         <img src="${logoSrc}" alt="${candidate.Supporting_party}" class="party-logo">
@@ -148,7 +199,7 @@ function createCandidateCard(candidate) {
                 </div>
             </div>
             <div class="candidate-description">
-                ${escapeHtml(candidate.en_description)}
+                ${escapeHtml(displayDesc)}
             </div>
             <div class="candidate-actions">
                 <button class="icon-btn edit-btn" data-id="${candidate.id}">
@@ -211,6 +262,9 @@ function closeDelModal() {
 function resetForm() {
     candidateForm.reset();
     candidateIdInput.value = '';
+    // Reset position selection UI
+    idPositionInput.value = '';
+    if (positionSelectedText) positionSelectedText.textContent = positionPlaceholder;
     photoPreview.classList.remove('active');
     photoPreview.innerHTML = '';
     partyLogoPreview.classList.remove('active');
@@ -228,6 +282,11 @@ function populateForm(candidate) {
     arDescInput.value = candidate.ar_description;
     supportingPartyInput.value = candidate.Supporting_party;
     idPositionInput.value = candidate.id_position || '';
+    // Reflect in custom dropdown button text
+    if (positionSelectedText) {
+        const pos = positions.find(p => String(p.id) === String(candidate.id_position));
+        positionSelectedText.textContent = pos ? pos.name : positionPlaceholder;
+    }
     
     // Show existing images
     if (candidate.photo_path) {

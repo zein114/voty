@@ -53,6 +53,16 @@ function getAllCandidates() {
     ");
     $stmt->execute();
     $candidates = $stmt->fetchAll();
+
+    // Localize position name for Arabic using translation keys in lang/ar.php
+    if (function_exists('current_lang') && current_lang() === 'ar') {
+        foreach ($candidates as &$c) {
+            if (!empty($c['position_name'])) {
+                $c['position_name'] = t($c['position_name'], $c['position_name']);
+            }
+        }
+        unset($c);
+    }
     
     echo json_encode(['success' => true, 'candidates' => $candidates]);
 }
@@ -85,6 +95,16 @@ function getPositions() {
     $stmt = $pdo->prepare("SELECT id, name FROM position WHERE status = 1 ORDER BY id");
     $stmt->execute();
     $positions = $stmt->fetchAll();
+
+    // Localize position names when Arabic is active
+    if (function_exists('current_lang') && current_lang() === 'ar') {
+        foreach ($positions as &$p) {
+            if (!empty($p['name'])) {
+                $p['name'] = t($p['name'], $p['name']);
+            }
+        }
+        unset($p);
+    }
     
     echo json_encode(['success' => true, 'positions' => $positions]);
 }
