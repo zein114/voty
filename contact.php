@@ -18,13 +18,14 @@ include 'includes/header.php';
 <div class="contact-container">
     <div class="contact-info">
         <div class="curved-lines"></div>
+        <div class="left-container">
         <h1>Contact information</h1>
         <p class="subtitle">Si vous avez des questions, n'hésitez pas à nous contacter</p>
         
         <div class="info-label">
             <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M21 15.46L16.87 14.24C16.42 14.1 15.93 14.21 15.59 14.54L13.76 16.37C11.38 15.13 9.37 13.12 8.13 10.74L10.01 8.86C10.34 8.52 10.45 8.03 10.31 7.58L9.09 3.45C8.86 2.68 8.14 2.13 7.33 2.13H4.19C3.3 2.13 2.53 2.9 2.64 3.79C3.6 12.62 10.89 19.9 19.71 20.86C20.6 20.97 21.37 20.2 21.37 19.31V16.17C21.38 15.37 20.83 14.65 21.05 14.42Z" 
-                        stroke="#0d9488" 
+                        stroke="#06ac7d" 
                         stroke-width="1.5" 
                         stroke-linecap="round" 
                         stroke-linejoin="round"/>
@@ -35,12 +36,12 @@ include 'includes/header.php';
         <div class="info-label">
             <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" 
-                        stroke="#0d9488" 
+                        stroke="#06ac7d" 
                         stroke-width="1.5" 
                         stroke-linecap="round" 
                         stroke-linejoin="round"/>
                 <path d="M22 6L12 13L2 6" 
-                        stroke="#0d9488" 
+                        stroke="#06ac7d" 
                         stroke-width="1.5" 
                         stroke-linecap="round" 
                         stroke-linejoin="round"/>
@@ -81,10 +82,11 @@ include 'includes/header.php';
                 </svg>
             </a>
         </div>
+        </div>
     </div>
 
     <div class="contact-form">
-        <form>
+        <form class="right-container">
             <div class="form-row">
                 <div class="form-group">
                     <label>Prenom<span class="required">*</span></label>
