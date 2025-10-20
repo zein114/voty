@@ -291,6 +291,10 @@ async function handleSubmit(e) {
             closeAddModal();
             await loadCandidates();
             notify(data.message, 'success');
+            const savedId = data.id ? parseInt(data.id) : currentEditId;
+            if (savedId) {
+                showMissingCandidateNote(savedId);
+            }
         } else {
             notify(data.message || 'Failed to save candidate', 'error');
         }
@@ -345,14 +349,110 @@ function escapeHtml(text) {
     return div.innerHTML;
 }
 
-function notify(message, type = 'info') {
-    if (window.showToast) {
-        try {
-            window.showToast(message, type);
-        } catch (e) {
-            // no-op
+function showMissingCandidateNote(id) {
+    const cand = candidates.find(c => c.id === id);
+    if (!cand) return;
+    const missing = [];
+    const photoMissing = !cand.photo_path || String(cand.photo_path).includes('candidate-placeholder.png');
+    const logoMissing = !cand.path_supporting_party_logo || String(cand.path_supporting_party_logo).includes('party-placeholder.jpg');
+    const positionMissing = !cand.id_position;
+    const partyMissing = !cand.Supporting_party || String(cand.Supporting_party).trim() === '';
+    if (photoMissing) missing.push('profile photo');
+    if (logoMissing) missing.push('party logo');
+    if (positionMissing) missing.push('position');
+    if (partyMissing) missing.push('party');
+    if (missing.length > 0) {
+        notify(`Note: Missing ${missing.join(', ')}`, 'gray');
+    }
+}
+
+// Local toast implementation (scoped to this page)
+const showToastLocal = (function() {
+    const activeToasts = new Map();
+
+    function getContainer() {
+        let el = document.getElementById('toastContainer');
+        if (!el) {
+            el = document.createElement('div');
+            el.id = 'toastContainer';
+            el.className = 'toast-container';
+            document.body.appendChild(el);
         }
-    } else {
+        return el;
+    }
+
+    function removeToast(toast, key, skipAnimation = false) {
+        if (skipAnimation) {
+            toast.classList.add('removing');
+            setTimeout(() => {
+                toast.remove();
+                activeToasts.delete(key);
+            }, 50);
+            return;
+        }
+        toast.style.transform = '';
+        toast.style.opacity = '';
+        toast.style.transition = '';
+        toast.classList.remove('show');
+        toast.classList.add('removing');
+        setTimeout(() => {
+            toast.remove();
+            activeToasts.delete(key);
+        }, 300);
+    }
+
+    return function showToastLocal(message, type = 'error') {
+        const container = getContainer();
+
+        if (activeToasts.has(message)) {
+            const item = activeToasts.get(message);
+            item.counter.count++;
+            item.counter.element.textContent = item.counter.count;
+            item.counter.element.style.display = 'flex';
+            clearTimeout(item.timeout);
+            item.timeout = setTimeout(() => removeToast(item.element, message), 5000);
+            return;
+        }
+
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        toast.innerHTML = `
+            <div class="toast-icon ${type}"></div>
+            <div class="toast-message">${message}</div>
+            <div class="toast-counter">1</div>
+            <button class="toast-close">×</button>
+        `;
+
+        container.appendChild(toast);
+
+        const counterEl = toast.querySelector('.toast-counter');
+        counterEl.style.display = 'none';
+
+        const closeBtn = toast.querySelector('.toast-close');
+        closeBtn.addEventListener('click', () => removeToast(toast, message));
+
+        const timeout = setTimeout(() => removeToast(toast, message), 5000);
+        activeToasts.set(message, {
+            element: toast,
+            counter: { element: counterEl, count: 1 },
+            timeout
+        });
+
+        // Trigger show animation with double rAF for consistency
+        void toast.offsetHeight;
+        const triggerShow = () => toast.classList.add('show');
+        if (window.requestAnimationFrame) {
+            requestAnimationFrame(() => requestAnimationFrame(triggerShow));
+        } else {
+            setTimeout(triggerShow, 16);
+        }
+    };
+})();
+
+function notify(message, type = 'error') {
+    try {
+        showToastLocal(message, type);
+    } catch (e) {
         if (type === 'error') {
             console.error(message);
         } else {
