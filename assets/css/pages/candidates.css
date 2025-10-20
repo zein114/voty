@@ -33,6 +33,10 @@
   letter-spacing: 0.5px;
 }
 
+html[dir="rtl"] .position-header {
+  text-align: right;
+}
+
 .candidate-card {
   background: #2a2a2a;
   border-radius: 0;

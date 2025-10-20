@@ -46,7 +46,7 @@ include 'includes/header.php';
         if (current_lang() === 'ar') { $posName = t($posName, $posName); }
         ?>
         <div class="candidates-list">
-            <div class="position-header"><?php echo htmlspecialchars($posName); ?></div>
+            <div class="position-header"><?php echo htmlspecialchars($posName); ?><span>:</span></div>
 
             <?php foreach ($byPos[$pid] as $cand) {
                 $photo = $cand['photo_path'] ?: 'assets/images/candidates/profile/candidate-placeholder.png';
