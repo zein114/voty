@@ -156,4 +156,7 @@ return [
     'delete' => 'حذف',
     'confirm_delete' => 'تأكيد الحذف',
     'delete_candidate_confirm' => 'هل أنت متأكد من حذف هذا المرشح؟',
+
+//candidates
+'list_of_candidates' => 'قائمة المرشحين',
 ];

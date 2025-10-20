@@ -14,22 +14,6 @@
   margin-bottom: 8px;
 }
 
-.header p {
-  color: #fff;
-  font-size: 20px;
-  margin-bottom: 30px;
-}
-
-.election-type {
-  font-size: 18px;
-  margin-bottom: 20px;
-}
-
-.election-type .highlight {
-  color: #06ac7d;
-  font-weight: 600;
-}
-
 .candidates-list {
   display: flex;
   flex-direction: column;

@@ -157,4 +157,7 @@ return [
     'delete' => 'Supprimer',
     'confirm_delete' => 'Confirmer la suppression',
     'delete_candidate_confirm' => 'Êtes-vous sûr de vouloir supprimer ce candidat?',
+
+    //candidates
+    'list_of_candidates' => 'Liste des candidats',
 ];
