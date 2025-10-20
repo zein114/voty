@@ -21,7 +21,7 @@ if (!isset($_SESSION['role']) || !in_array($_SESSION['role'], ['user', 'admin'])
 
 include '../includes/admin-header.php';
 ?>
-<div class="admin-candidates-container">
+<div class="admin-candidates-container" data-edit-label="<?php echo htmlspecialchars(t('edit_candidate', 'Modifier le candidat')); ?>" data-delete-label="<?php echo htmlspecialchars(t('delete', 'Supprimer')); ?>">
     <div class="page-header">
         <h1><?php echo t('manage_candidates', 'Gérer les candidats'); ?></h1>
         <button class="btn-primary" id="addCandidateBtn">
@@ -76,7 +76,7 @@ include '../includes/admin-header.php';
                         <h6><?php echo t('position', 'Poste'); ?></h6>
                         <input type="hidden" id="id_position" name="id_position" value="">
                         <div class="dropdown-container" id="positionDropdown">
-                            <button class="dropdown-button" id="positionDropdownButton" type="button">
+                            <button class="dropdown-button" id="positionDropdownButton" type="button" style="width: 22.6rem;">
                                 <svg
                                     class="dropdown-icon"
                                     fill="none"
