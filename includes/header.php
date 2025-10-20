@@ -47,7 +47,7 @@ require_once 'core/lang.php'; ?>
       <li><a href="results.php" class="<?php echo (basename($_SERVER['PHP_SELF']) == 'results.php') ? 'active' : ''; ?>"><?php echo t('results', 'Résultats'); ?></a></li>
       <li><a href="about.php" class="<?php echo (basename($_SERVER['PHP_SELF']) == 'about.php') ? 'active' : ''; ?>"><?php echo t('about', 'À propos'); ?></a></li>
       <li><a href="contact.php" class="<?php echo (basename($_SERVER['PHP_SELF']) == 'contact.php') ? 'active' : ''; ?>"><?php echo t('contact', 'Contact'); ?></a></li>
-      <li><a href="logout.php" class="btn-danger"><?php echo t('logout', 'Déconnexion'); ?></a></li>
+      <li><a href="core/logout.php" class="btn-danger"><?php echo t('logout', 'Déconnexion'); ?></a></li>
     </ul>
   </nav>
 
