@@ -2,11 +2,6 @@
 require_once 'config.php';
 require_once 'lang.php';
 
-// Enable error reporting for debugging
-error_reporting(E_ALL);
-ini_set('display_errors', 0);
-ini_set('log_errors', 1);
-
 // Check if user is logged in and is admin
 if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in'] || $_SESSION['role'] !== 'admin') {
     http_response_code(403);
@@ -17,9 +12,6 @@ if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in'] || $_SESSION['role
 header('Content-Type: application/json');
 
 $action = $_POST['action'] ?? $_GET['action'] ?? '';
-
-// Debug: Log the action
-error_log('Candidate handler called with action: ' . $action);
 
 try {
     switch ($action) {
@@ -43,12 +35,11 @@ try {
             break;
         default:
             http_response_code(400);
-            echo json_encode(['success' => false, 'message' => 'Invalid action', 'received_action' => $action]);
+            echo json_encode(['success' => false, 'message' => 'Invalid action']);
     }
 } catch (Exception $e) {
-    error_log('Exception in candidate handler: ' . $e->getMessage());
     http_response_code(500);
-    echo json_encode(['success' => false, 'message' => 'Server error: ' . $e->getMessage(), 'trace' => $e->getTraceAsString()]);
+    echo json_encode(['success' => false, 'message' => 'Server error: ' . $e->getMessage()]);
 }
 
 function getAllCandidates() {
@@ -101,10 +92,6 @@ function getPositions() {
 function createCandidate() {
     global $pdo;
     
-    // Debug: Log received data
-    error_log('Create candidate - POST data: ' . print_r($_POST, true));
-    error_log('Create candidate - FILES data: ' . print_r($_FILES, true));
-    
     // Get form data
     $name = $_POST['name'] ?? '';
     $ar_name = $_POST['ar_name'] ?? '';
@@ -113,9 +100,6 @@ function createCandidate() {
     $ar_description = $_POST['ar_description'] ?? '';
     $supporting_party = $_POST['supporting_party'] ?? '';
     $id_position = !empty($_POST['id_position']) ? $_POST['id_position'] : null;
-    
-    // Debug: Log extracted values
-    error_log('Extracted values - name: ' . $name . ', ar_name: ' . $ar_name . ', party: ' . $supporting_party);
     
     // Validate required fields
     if (empty($name) || empty($ar_name) || empty($en_description) || 
@@ -135,7 +119,7 @@ function createCandidate() {
     }
     
     // Handle party logo upload
-    $party_logo_path = 'assets/images/candidates/profile/candidate-placeholder.png';
+    $party_logo_path = 'assets/images/candidates/party/party-placeholder.jpg';
     if (isset($_FILES['party_logo']) && $_FILES['party_logo']['error'] === UPLOAD_ERR_OK) {
         $uploaded = handleFileUpload($_FILES['party_logo'], 'party');
         if ($uploaded) {
@@ -151,34 +135,20 @@ function createCandidate() {
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
     ");
     
-    try {
-        $result = $stmt->execute([
-            $name, $ar_name, $photo_path, $en_description, $fr_description, 
-            $ar_description, $supporting_party, $party_logo_path, $id_position
-        ]);
-        
-        if ($result) {
-            echo json_encode([
-                'success' => true, 
-                'message' => 'Candidate created successfully',
-                'id' => $pdo->lastInsertId()
-            ]);
-        } else {
-            $errorInfo = $stmt->errorInfo();
-            http_response_code(500);
-            echo json_encode([
-                'success' => false, 
-                'message' => 'Failed to create candidate',
-                'error' => $errorInfo
-            ]);
-        }
-    } catch (PDOException $e) {
-        http_response_code(500);
+    $result = $stmt->execute([
+        $name, $ar_name, $photo_path, $en_description, $fr_description, 
+        $ar_description, $supporting_party, $party_logo_path, $id_position
+    ]);
+    
+    if ($result) {
         echo json_encode([
-            'success' => false, 
-            'message' => 'Database error: ' . $e->getMessage(),
-            'error' => $e->getTrace()
+            'success' => true, 
+            'message' => 'Candidate created successfully',
+            'id' => $pdo->lastInsertId()
         ]);
+    } else {
+        http_response_code(500);
+        echo json_encode(['success' => false, 'message' => 'Failed to create candidate']);
     }
 }
 
@@ -234,7 +204,8 @@ function updateCandidate() {
         if ($new_logo) {
             // Delete old logo if exists and not placeholder
             if ($party_logo_path && file_exists('../' . $party_logo_path) && 
-                strpos($party_logo_path, 'candidate-placeholder.png') === false) {
+                strpos($party_logo_path, 'candidate-placeholder.png') === false &&
+                strpos($party_logo_path, 'party-placeholder.jpg') === false) {
                 unlink('../' . $party_logo_path);
             }
             $party_logo_path = $new_logo;
@@ -295,7 +266,8 @@ function deleteCandidate() {
             unlink('../' . $candidate['photo_path']);
         }
         if ($candidate['path_supporting_party_logo'] && file_exists('../' . $candidate['path_supporting_party_logo']) && 
-            strpos($candidate['path_supporting_party_logo'], 'candidate-placeholder.png') === false) {
+            strpos($candidate['path_supporting_party_logo'], 'candidate-placeholder.png') === false &&
+            strpos($candidate['path_supporting_party_logo'], 'party-placeholder.jpg') === false) {
             unlink('../' . $candidate['path_supporting_party_logo']);
         }
         

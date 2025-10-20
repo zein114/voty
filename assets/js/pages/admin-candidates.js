@@ -131,7 +131,7 @@ function renderCandidates() {
 // Create candidate card HTML
 function createCandidateCard(candidate) {
     const photoSrc = candidate.photo_path ? `../${candidate.photo_path}` : '../assets/images/candidates/profile/candidate-placeholder.png';
-    const logoSrc = candidate.path_supporting_party_logo ? `../${candidate.path_supporting_party_logo}` : '../assets/images/candidates/profile/candidate-placeholder.png';
+    const logoSrc = candidate.path_supporting_party_logo ? `../${candidate.path_supporting_party_logo}` : '../assets/images/candidates/party/party-placeholder.jpg';
     const positionName = candidate.position_name || 'No position';
     
     return `
@@ -285,25 +285,10 @@ async function handleSubmit(e) {
             body: formData
         });
         
-        // Log the response
-        const responseText = await response.text();
-        console.log('Raw response:', responseText);
-        
-        // Try to parse as JSON
-        let data;
-        try {
-            data = JSON.parse(responseText);
-        } catch (e) {
-            console.error('Failed to parse JSON:', e);
-            console.error('Response was:', responseText);
-            throw new Error('Invalid server response: ' + responseText.substring(0, 100));
-        }
-        
-        console.log('Parsed data:', data);
+        const data = await response.json();
         
         if (data.success) {
             showToast(data.message, 'success');
-            // Close modal and reload
             closeAddModal();
             loadCandidates();
         } else {
@@ -311,7 +296,7 @@ async function handleSubmit(e) {
         }
     } catch (error) {
         console.error('Error saving candidate:', error);
-        showToast('An error occurred while saving: ' + error.message, 'error');
+        showToast('An error occurred while saving', 'error');
     } finally {
         saveBtn.classList.remove('loading');
         saveBtn.disabled = false;
