@@ -97,7 +97,7 @@ async function loadCandidates() {
         }
     } catch (error) {
         console.error('Error loading candidates:', error);
-        showToast('Failed to load candidates', 'error');
+        notify('Failed to load candidates', 'error');
     }
 }
 
@@ -257,7 +257,7 @@ function handleFilePreview(event, previewElement, labelElement) {
             };
             reader.readAsDataURL(file);
         } else {
-            showToast('Please select an image file', 'error');
+            notify('Please select an image file', 'error');
             event.target.value = '';
         }
     }
@@ -288,15 +288,15 @@ async function handleSubmit(e) {
         const data = await response.json();
         
         if (data.success) {
-            showToast(data.message, 'success');
             closeAddModal();
-            loadCandidates();
+            await loadCandidates();
+            notify(data.message, 'success');
         } else {
-            showToast(data.message || 'Failed to save candidate', 'error');
+            notify(data.message || 'Failed to save candidate', 'error');
         }
     } catch (error) {
         console.error('Error saving candidate:', error);
-        showToast('An error occurred while saving', 'error');
+        notify('An error occurred while saving', 'error');
     } finally {
         saveBtn.classList.remove('loading');
         saveBtn.disabled = false;
@@ -323,15 +323,15 @@ async function handleDelete() {
         const data = await response.json();
         
         if (data.success) {
-            showToast(data.message, 'success');
             closeDelModal();
             await loadCandidates();
+            notify(data.message, 'success');
         } else {
-            showToast(data.message || 'Failed to delete candidate', 'error');
+            notify(data.message || 'Failed to delete candidate', 'error');
         }
     } catch (error) {
         console.error('Error deleting candidate:', error);
-        showToast('An error occurred while deleting', 'error');
+        notify('An error occurred while deleting', 'error');
     } finally {
         confirmDeleteBtn.classList.remove('loading');
         confirmDeleteBtn.disabled = false;
@@ -343,4 +343,20 @@ function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
+}
+
+function notify(message, type = 'info') {
+    if (window.showToast) {
+        try {
+            window.showToast(message, type);
+        } catch (e) {
+            // no-op
+        }
+    } else {
+        if (type === 'error') {
+            console.error(message);
+        } else {
+            console.log(message);
+        }
+    }
 }
