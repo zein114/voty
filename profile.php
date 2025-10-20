@@ -71,32 +71,32 @@ include 'includes/header.php';
 
             <div class="info-grid">
                 <div class="info-item">
-                    <span class="info-label"><?php echo t('surname'); ?></span>
+                    <span class="contact-label"><?php echo t('surname'); ?></span>
                     <span class="info-value"><?php echo htmlspecialchars($display_surname ?? '-'); ?></span>
                 </div>
 
                 <div class="info-item">
-                    <span class="info-label"><?php echo t('sex'); ?></span>
+                    <span class="contact-label"><?php echo t('sex'); ?></span>
                     <span class="info-value"><?php echo htmlspecialchars(t($user['sex'] ?? '',$user['sex'])); ?></span>
                 </div>
 
                 <div class="info-item">
-                    <span class="info-label"><?php echo t('date_of_birth'); ?></span>
+                    <span class="contact-label"><?php echo t('date_of_birth'); ?></span>
                     <span class="info-value"><?php echo htmlspecialchars($formatted_dob ?: '-'); ?></span>
                 </div>
 
                 <div class="info-item">
-                    <span class="info-label"><?php echo t('identify_code'); ?></span>
+                    <span class="contact-label"><?php echo t('identify_code'); ?></span>
                     <span class="info-value"><?php echo htmlspecialchars($user['user_id'] ?? '-'); ?></span>
                 </div>
 
                 <div class="info-item">
-                    <span class="info-label"><?php echo t('place_of_birth'); ?></span>
+                    <span class="contact-label"><?php echo t('place_of_birth'); ?></span>
                     <span class="info-value"><?php echo htmlspecialchars(t($user['place_birth'] ?? '',$user['place_birth'])); ?></span>
                 </div>
 
                 <div class="info-item">
-                    <span class="info-label"><?php echo t('nationality'); ?></span>
+                    <span class="contact-label"><?php echo t('nationality'); ?></span>
                     <span class="info-value"><?php echo htmlspecialchars(t($user['nationality'] ?? '',$user['nationality'])); ?></span>
                 </div>
             </div>
