@@ -6,7 +6,7 @@ let deleteTargetId = null;
 
 // DOM Elements
 const candidatesGrid = document.getElementById('candidatesGrid');
-const addCandidateBtn = document.getElementById('addCandidateBtn');
+// const addCandidateBtn = document.getElementById('addCandidateBtn');
 const candidateModal = document.getElementById('candidateModal');
 const deleteModal = document.getElementById('deleteModal');
 const candidateForm = document.getElementById('candidateForm');
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Event Listeners
 function initEventListeners() {
-    addCandidateBtn.addEventListener('click', openAddModal);
+    // addCandidateBtn.addEventListener('click', openAddModal);
     closeModal.addEventListener('click', closeAddModal);
     cancelBtn.addEventListener('click', closeAddModal);
     candidateModal.querySelector('.modal-overlay').addEventListener('click', closeAddModal);
@@ -187,8 +187,8 @@ function renderCandidates() {
 
 // Create candidate card HTML
 function createCandidateCard(candidate) {
-    const photoSrc = candidate.photo_path ? `../${candidate.photo_path}` : '../assets/images/candidates/profile/candidate-placeholder.png';
-    const logoSrc = candidate.path_supporting_party_logo ? `../${candidate.path_supporting_party_logo}` : '../assets/images/candidates/party/party-placeholder.jpg';
+    const photoSrc = candidate.photo_path ? `..\\${candidate.photo_path}` : '..\\assets\\images\\candidates\\profile\\candidate-placeholder.png';
+    const logoSrc = candidate.path_supporting_party_logo ? `..\\${candidate.path_supporting_party_logo}` : '..\\assets\\images\\candidates\\party\\party-placeholder.jpg';
     const positionName = candidate.position_name || 'No position';
 
     let displayName = candidate.name;

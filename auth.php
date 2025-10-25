@@ -5,7 +5,27 @@ require_once 'core/lang.php';
 // Redirect logged-in users to appropriate pages
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
     // Redirect to admin dashboard if user is admin, or to index page if regular user
-    $redirect = (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') ? 'admin/dashboard' : './';
+    if (isset($_SESSEION['role'])) {
+      $redirect;
+
+      switch ($_SESSION['role']) {
+        case 'super_admin':
+          $redirect = 'super_admin/dashboard';
+          break;
+
+        case 'admin':
+          $redirect = 'admin/dashboard';
+          break;
+
+        case 'user':
+          $redirect = './';
+          break;
+
+        default:
+          $redirect = './auth';
+        break;
+      }
+    }
     header('Location: ' . $redirect);
     exit();
 }
@@ -116,7 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 initializeSession($user);
 
                 // Determine redirect based on role
-                $redirect = $user['role'] === 'admin' ? 'admin/dashboard' : './';
+                if ($user['role'] === 'super_admin') { $redirect = 'super_admin/dashboard'; } else if ($user['role'] === 'admin') { $redirect = 'admin/dashboard'; } else { $redirect = './'; };
 
                 echo json_encode([
                     'success' => true,
@@ -181,7 +201,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 initializeSession($user);
 
                 // Determine redirect based on role
-                $redirect = $user['role'] === 'admin' ? 'admin/dashboard' : './';
+                if ($user['role'] === 'super_admin') { $redirect = 'super_admin/dashboard'; } else if ($user['role'] === 'admin') { $redirect = 'admin/dashboard'; } else { $redirect = './'; };
 
                 echo json_encode([
                     'success' => true,

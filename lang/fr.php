@@ -106,12 +106,10 @@ return [
     // Index page
     'logo_text' => 'Sécurité et transparence dans votre vote...',
     'logo_text_technic' => 'Propulsé par le Web3',
-    'view_result' => 'Voir les résultats des élections',
+    'any_position' => 'Il n\'y a pas d\'élections',
     'view_list' => 'Voir la liste des candidats',
     'the_elected_positions' => 'Les postes élus sont :',
     'vote_label' => 'Votez maintenant !!',
-    'input_select_vote' => 'Veuillez sélectionner votre choix',
-    'vote_button' => 'Voter',
 
     // Noms des postes (utilisés comme clés depuis la BD)
     'President' => 'Président',
@@ -132,6 +130,22 @@ return [
     'english' => 'English',
     'arabic' => 'العربية',
     'french' => 'Français',
+    
+    // admin-elections pages
+    'manage_elections' => 'Gérer les élections',
+    'add_election' => 'Ajouter une nouvelle élection',
+    'card_title' => 'Élections étudiantes',
+    'oreganized_by' => 'Organisé par :',
+    'start_at' => 'Date de début : ',
+    'end_at' => 'Date de fin : ',
+    'btn_stop_election' => 'Arrêter les élections',
+    'btn_add_candidate' => 'Ajouter un nouveau candidat',
+    'btn_list_candidates' => 'Liste des candidats',
+    'btn_add_position' => 'Ajouter un nouveau poste',
+    'btn_list_positions' => 'Liste des postes',
+    'btn_publish_results' => 'Publier les résultats',
+    'btn_stop_publishing_results' => 'Arrêter la publication des résultats',
+    'btn_view_results' => 'Voir les résultats',
 
     // Admin Candidates page
     'manage_candidates' => 'Gérer les candidats',

@@ -12,10 +12,10 @@ require_once '../core/lang.php'; ?>
   <link rel="stylesheet" href="../assets/css/utilities/animations.css" />
   <link rel="stylesheet" href="../assets/css/utilities/spinner.css" />
   <link rel="stylesheet" href="../assets/css/layout/admin-header.css" />
-  <link rel="stylesheet" href="../assets/css/pages/admin-dashboard.css" />
-  <link rel="stylesheet" href="../assets/css/pages/admin-elections.css" />
-  <link rel="stylesheet" href="../assets/css/pages/admin-candidates.css" />
-  <link rel="stylesheet" href="../assets/css/pages/admin-results.css" />
+  <link rel="stylesheet" href="../assets/css/pages/super-admin-dashboard.css" />
+  <link rel="stylesheet" href="../assets/css/pages/super-admin-elections.css" />
+  <link rel="stylesheet" href="../assets/css/pages/super-admin-candidates.css" />
+  <link rel="stylesheet" href="../assets/css/pages/super-admin-results.css" />
   <link rel="stylesheet" href="../assets/css/layout/admin-footer.css" />
   <script src="../assets/js/layout/admin-header.js" defer></script>
   <link rel="icon" type="image/png" href="../assets/images/voty.svg" />

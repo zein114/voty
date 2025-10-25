@@ -1,0 +1,400 @@
+.admin-elections-container {
+  min-height: 93vh;
+  margin: 4vh;
+  max-width: 70%;
+  margin-left: 12%;
+  /* display: flex;
+  align-items: center;
+  gap: 5vh;
+  flex-direction: column; */
+}
+
+.admin-elections-container .header-elections {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+    }
+
+.admin-elections-container .btn-add-election .add-election {
+    height: 5vh;
+    width: 25vh;
+    font-size: 1.5vh;
+    color: #06AC7D;
+    background-color: #2a2a2a;
+    border: 2px solid #06AC7D;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.1s ease, background 0.2s ease;
+}
+
+.admin-elections-container .btn-add-election .add-election:active {
+    transform: scale(0.95);
+    background: rgba(6, 172, 125, 0.5);
+}
+
+.admin-elections-container .grid-cards-elections {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3%;
+}
+
+.admin-elections-container .grid-cards-elections .card-elections {
+    background-color: #2a2a2a;
+    border: 2px solid #06AC7D;
+    border-radius: 6px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5%;
+    padding: 4%;
+    width: 100%;
+}
+
+.admin-elections-container .grid-cards-elections .card-elections .card-election-details {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    width: 100%;
+}
+
+.admin-elections-container .grid-cards-elections .card-elections .card-election-details .card-title {
+    font-size: 2vh;
+    letter-spacing: 0.2vh;
+    font-weight: 600;
+}
+
+.admin-elections-container .grid-cards-elections .card-elections .card-election-details .election-year {
+    font-size: 2.5vh;
+    color: #06AC7D;
+    font-weight: bold;
+    letter-spacing: 1.5vh;
+    margin-bottom: 3%;
+}
+
+.admin-elections-container .grid-cards-elections .card-elections .card-election-details .election-organized-by {
+    font-size: 1.5vh;
+    letter-spacing: 0.5vh;
+}
+
+.admin-elections-container .grid-cards-elections .card-elections .card-election-details .organizer {
+    font-size: 1.8vh;
+    color: #06AC7D;
+    font-weight: 600;
+    letter-spacing: 0.5vh;
+    margin-bottom: 3%;
+}
+
+.admin-elections-container .grid-cards-elections .card-elections .card-election-details .date {
+    margin-top: 1%;
+}
+
+.admin-elections-container .grid-cards-elections .card-elections .card-election-details .date .green {
+    color: #06AC7D;
+    letter-spacing: 0.5vh;
+}
+
+.admin-elections-container .grid-cards-elections .card-elections .card-elections-btns {
+    display: flex;
+    align-items: end;
+    justify-content: flex-end;
+    flex-direction: column;
+    gap: 2%;
+}
+
+.admin-elections-container .grid-cards-elections .card-elections .card-elections-btns .btn-stop {
+    width: 20vh;
+    height: 5vh;
+    background: #FF4444;
+    border: 2px solid #3a3a3a;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.1s ease, background 0.2s ease;
+}
+
+.admin-elections-container .grid-cards-elections .card-elections .card-elections-btns .btn-stop:active {
+    transform: scale(0.95);
+    background: rgba(255, 68, 68, 0.5);
+}
+
+.admin-elections-container .grid-cards-elections .card-elections .card-elections-btns .grid-btns-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2vh;
+    width: 40vh;
+    margin: 0;
+    margin-top: 3%;
+}
+
+.admin-elections-container .grid-cards-elections .card-elections .card-elections-btns .grid-btns-card .btn-card {
+    width: 20vh;
+    height: 5vh;
+    background: #2a2a2a;
+    color: #06AC7D;
+    border: 2px solid #06AC7D;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.1s ease, background 0.2s ease;
+}
+
+.admin-elections-container .grid-cards-elections .card-elections .card-elections-btns .grid-btns-card .btn-card.die {
+    background: #2a2a2a;
+    color: #3a3a3a;
+    border: 2px solid #3a3a3a;
+    cursor: auto;
+    transition: none;
+}
+
+.admin-elections-container .grid-cards-elections .card-elections .card-elections-btns .grid-btns-card .btn-card:active {
+    transform: scale(0.95);
+    background: rgba(6, 172, 125, 0.5);
+}
+
+.admin-elections-container .grid-cards-elections .card-elections .card-elections-btns .grid-btns-card .btn-card.die:active {
+    transform: none;
+    background: none;
+}
+
+.admin-elections-container .modal {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.admin-elections-container .modal.active  {
+    opacity: 1;
+    background: rgba(42, 42, 42, 0.9);
+    border: 2px solid #3a3a3a;
+    width: auto;
+    height: auto;
+    position: absolute;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 5vh;
+    top: 5%;
+    left: 35%;
+}
+
+.admin-elections-container .modal .close-icon {
+    margin-right: -110%;
+    margin-top: -10%;
+    cursor: pointer;
+}
+
+.admin-elections-container .modal .title-modal {
+    font-size: 2.5vh;
+    color: #06ac7d;
+}
+
+.admin-elections-container .modal .form {
+    width: 80%;
+    height: auto;
+    margin: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 3vh;
+}
+
+.admin-elections-container .modal .form .input-form {
+    display: flex;
+    justify-content: flex-start;
+    align-items: self-start;
+    flex-direction: column;
+    gap: 1vh;
+}
+
+.admin-elections-container .modal .form .input-form label {
+    color: #06AC7D;
+}
+
+.admin-elections-container .modal .form .input-form input,
+.admin-elections-container .modal .form .input-form select {
+    width: 40vh;
+    background-color: transparent;
+    border: 2px solid #06ac7d;
+    color: #ffffff;
+    border-radius: 6px;
+    box-sizing: border-box;
+    height: 4vh;
+    color: #06AC7D;
+}
+
+.admin-elections-container .modal .form .input-form select option {
+    background-color: #2a2a2a;
+    border: 2px solid #06ac7d;
+    color: #06AC7D;
+}
+
+.admin-elections-container .modal .btn-form {
+    width: 40vh;
+    background-color: transparent;
+    border: 2px solid #06ac7d;
+    color: #06ac7d;
+    border-radius: 6px;
+    height: 5vh;
+    cursor: pointer;
+    transition: transform 0.1s ease, background 0.2s ease;
+}
+
+.admin-elections-container .modal .btn-form:active {
+    transform: scale(0.95);
+    background: rgba(6, 172, 125, 0.5);
+}
+
+.admin-elections-container .modal table {
+    margin: 3vh;
+    border: 1px solid #06ac7d;
+    padding: 1vh;
+    border-radius: 6px;
+}
+
+.admin-elections-container .modal table thead tr th {
+    color: #06AC7D;
+    border-bottom: 1px solid #06ac7d;
+}
+
+.admin-elections-container .modal table tbody tr td {
+    text-align: center;
+    border-bottom: 1px solid #06ac7d;
+}
+
+.admin-elections-container .modal table thead .last-element td {
+    border-bottom: none;
+}
+
+@media (max-width: 1300px) {
+    .admin-elections-container .btn-add-election .add-election {
+        height: 8vh;
+        width: 35vh;
+        font-size: 2vh;
+    }
+
+    .admin-elections-container .grid-cards-elections {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 5%;
+    }
+
+    .admin-elections-container .grid-cards-elections .card-elections {
+        margin-bottom: 10%;
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-elections-container .text-description {
+        font-size: 2.5vh;
+    }
+
+    .admin-elections-container .btn-add-election .add-election {
+        height: 6vh;
+        width: 25vh;
+        font-size: 1.5vh;
+    }
+
+    .admin-elections-container .grid-cards-elections {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 5%;
+    }
+
+    .admin-elections-container .grid-cards-elections .card-elections {
+        margin-bottom: 10%;
+        width: 100%;
+        gap: 2%;
+    }
+
+    .admin-elections-container .grid-cards-elections .card-elections .card-election-details .card-title {
+        font-size: 2vh;
+        letter-spacing: 0.3vh;
+    }
+
+    .admin-elections-container .grid-cards-elections .card-elections .card-election-details .election-year {
+        font-size: 2vh;
+        letter-spacing: 0.5vh;
+    }
+
+    .admin-elections-container .grid-cards-elections .card-elections .card-election-details .election-organized-by {
+        font-size: 1.5vh;
+    }
+
+    .admin-elections-container .grid-cards-elections .card-elections .card-election-details .organizer {
+        font-size: 1.6vh;
+    }
+
+    .admin-elections-container .grid-cards-elections .card-elections .card-election-details .date {
+        font-size: 1.4vh;
+    }
+
+    .admin-elections-container .grid-cards-elections .card-elections .card-election-details .date .green {
+        letter-spacing: 0.2vh;
+    }
+
+    .admin-elections-container .grid-cards-elections .card-elections .card-elections-btns .btn-stop {
+        width: 18vh;
+        height: 5vh;
+    }
+
+    .admin-elections-container .grid-cards-elections .card-elections .card-elections-btns .grid-btns-card {
+        width: 38vh;
+    }
+
+    .admin-elections-container .grid-cards-elections .card-elections .card-elections-btns .grid-btns-card .btn-card {
+        width: 18vh;
+        height: 5vh;
+    }
+}
+
+@media (max-width: 532px) {    
+    .admin-elections-container .text-description {
+        font-size: 1.6vh;
+    }
+    .admin-elections-container .grid-cards-elections .card-elections .card-election-details .card-title {
+        font-size: 1.4vh;
+    }
+
+    .admin-elections-container .grid-cards-elections .card-elections .card-election-details .election-year {
+        font-size: 1.5vh;
+    }
+
+    .admin-elections-container .grid-cards-elections .card-elections .card-election-details .election-organized-by {
+        font-size: 1.3vh;
+    }
+
+    .admin-elections-container .grid-cards-elections .card-elections .card-election-details .organizer {
+        font-size: 1.4vh;
+    }
+
+    .admin-elections-container .grid-cards-elections .card-elections .card-election-details .date {
+        font-size: 1.2vh;
+    }
+
+    .admin-elections-container .grid-cards-elections .card-elections .card-election-details .date .green {
+        letter-spacing: 0.2vh;
+    }
+
+    .admin-elections-container .grid-cards-elections .card-elections .card-elections-btns .btn-stop {
+        width: 12vh;
+        height: 3vh;
+        font-size: 50%;
+    }
+
+    .admin-elections-container .grid-cards-elections .card-elections .card-elections-btns .grid-btns-card {
+        width: 25vh;
+    }
+
+    .admin-elections-container .grid-cards-elections .card-elections .card-elections-btns .grid-btns-card .btn-card {
+        width: 11vh;
+        height: 3vh;
+        font-size: 50%;
+    }
+}

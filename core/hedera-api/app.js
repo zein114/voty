@@ -58,8 +58,8 @@ app.post('/api/receive-vote', async (req, res) => {
 
     if (alreadyVoted) {
         res.json({
-            status: "error",
-            message: "already_voted_for_the_candidate"
+            status: "alreadyVoted",
+            message: "already_voted_for_the_position"
         });
     } else {
         try {

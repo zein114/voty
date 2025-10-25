@@ -1,5 +1,5 @@
 .index-container {
-  min-height: 100vh;
+  min-height: 80vh;
   margin-top: 3%;
   margin-bottom: 10%;
   display: flex;
@@ -70,6 +70,13 @@
   border-bottom: 2px solid #3a3a3a;
   width: 95%;
   text-align: center;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.Elected-positions .label-elected-position:active {
+  color: rgba(6, 172,125, 0.6);
+  transform: scale(0.95);
 }
 
 .form-vote-label {
@@ -81,17 +88,24 @@
   margin-bottom: 15px;
 }
 
-.form-vote {
+
+.list-vote-modal {
+  display: none;
   background-color: #2a2a2a;
   border: 3px solid #3a3a3a;
   border-radius: 16px;
-  padding: 30px 40px;
+  padding: 3vh 4vh;
   width: 100%;
-  max-width: 850px;
+  max-width: 840px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  margin-top: 6vh;
 }
 
-.form-vote .grid-select-form {
+.list-vote-modal.active {
+  display: block;
+}
+
+/* .form-vote .grid-select-form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
@@ -133,15 +147,15 @@
 
 .form-vote .select-vote-input select option {
   background: #2a2a2a;
-}
+} */
 
-.form-vote .button-form {
+.list-vote-modal .button-form {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.form-vote .button-form button {
+.list-vote-modal .button-form button {
   padding: 15px;
   min-width: 49%;
   background: #06AC7D;
@@ -153,7 +167,7 @@
   transition: transform 0.1s ease, background 0.2s ease;
 }
 
-.form-vote .button-form button:active {
+.list-vote-modal .button-form button:active {
   transform: scale(0.95);
   background: rgba(6, 172, 125, 0.5);
 }

@@ -106,12 +106,11 @@ return [
     // Index page
     'logo_text' => 'Security and transparency in your vote...',
     'logo_text_technic' => 'Powered by Web3',
+    'any_position' => 'There are no elections',
     'view_result' => 'View election results',
     'view_list' => 'View the list of candidates',
     'the_elected_positions' => 'The elected positions are:',
     'vote_label' => 'Vote now!!',
-    'input_select_vote' => 'Please select your choice',
-    'vote_button' => 'Vote',
 
     // Position names (used as keys from DB)
     'President' => 'President',
@@ -132,6 +131,22 @@ return [
     'english' => 'English',
     'arabic' => 'العربية',
     'french' => 'Français',
+
+    // admin-elections pages
+    'manage_elections' => 'Manage Elections',
+    'add_election' => 'Add New Election',
+    'card_title' => 'Student Elections',
+    'oreganized_by' => 'Organized by :',
+    'start_at' => 'Start Date : ',
+    'end_at' => 'End Date : ',
+    'btn_stop_election' => 'Stop the Elections',
+    'btn_add_candidate' => 'Add New Candidate',
+    'btn_list_candidates' => 'List Of Candidates',
+    'btn_add_position' => 'Add New Position',
+    'btn_list_positions' => 'List Of Positions',
+    'btn_publish_results' => 'Publish The Results',
+    'btn_stop_publishing_results' => 'Stop Publishing Results',
+    'btn_view_results' => 'View Results',
 
     // Admin Candidates page
     'manage_candidates' => 'Manage Candidates',

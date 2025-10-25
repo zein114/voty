@@ -105,12 +105,10 @@ return [
     // Index page
     'logo_text' => 'الأمان والشفافية في تصويتك...',
     'logo_text_technic' => 'مدعوم بتقنية الويب3',
-    'view_result' => 'عرض نتائج الانتخابات',
+    'any_position' => 'لا توجد أي انتخابات',
     'view_list' => 'عرض قائمة المرشحين',
     'the_elected_positions' => 'المناصب المنتخبة هي:',
     'vote_label' => 'صوّت الآن!!',
-    'input_select_vote' => 'يرجى اختيار خيارك',
-    'vote_button' => 'تصويت',
 
     // أسماء المناصب (تستخدم كمفاتيح من قاعدة البيانات)
     'President' => 'الرئيس',
@@ -131,6 +129,22 @@ return [
     'english' => 'English',
     'arabic' => 'العربية',
     'french' => 'Français',
+
+    // admin-elections page
+    'manage_elections' => 'إدارة الانتخابات',
+    'add_election' => 'إضافة انتخابات جديدة',
+    'card_title' => 'انتخابات الطلاب',
+    'oreganized_by' => 'منظم من طرف:',
+    'start_at' => 'تاريخ البداية: ',
+    'end_at' => 'تاريخ النهاية: ',
+    'btn_stop_election' => 'إيقاف الانتخابات',
+    'btn_add_candidate' => 'إضافة مرشح جديد',
+    'btn_list_candidates' => 'قائمة المرشحين',
+    'btn_add_position' => 'إضافة منصب جديد',
+    'btn_list_positions' => 'قائمة المناصب',
+    'btn_publish_results' => 'نشر النتائج',
+    'btn_stop_publishing_results' => 'إيقاف نشر النتائج',
+    'btn_view_results' => 'عرض النتائج',
 
     // Admin Candidates page
     'manage_candidates' => 'إدارة المرشحين',

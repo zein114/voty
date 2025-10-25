@@ -2,7 +2,7 @@ function getVotes(){
     const voteData = new FormData();
     voteData.append('action', 'getResults');
 
-    fetch('core/hedera-bridge.php', {
+    fetch('../core/hedera-bridge.php', {
         method: "POST",
         body: voteData
     })
@@ -20,4 +20,6 @@ function getVotes(){
     })
     .catch(err => console.error('Error:', err));
 }
-getVotes();
+document.addEventListener('DOMContentLoaded', () => {
+    getVotes();
+})

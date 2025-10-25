@@ -304,3 +304,11 @@ html[dir="rtl"] .dropdown-menu { left: 0; right: auto; }
   white-space: nowrap;
   text-align: center;
 }
+
+.any-election {
+  font-size: 4vh;
+  color: rgba(145, 46, 46, 0.7);
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+}

@@ -6,11 +6,11 @@
   --hover-color: #3a3a3a;
 }
 
-.results-container {
-  min-height: 80vh;
+.admin-results-container {
+  min-height: 93vh;
   margin: 4vh;
-  max-width: 60%;
-  margin-left: 20%;
+  max-width: 70%;
+  margin-left: 15%;
 }
 
 /* body {

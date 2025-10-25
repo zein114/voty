@@ -4,7 +4,7 @@ require_once 'config.php';
 header('Content-Type: application/json');
 
 
-$action = $_GET['action'] ?? '';
+$action = $_GET['action'] ?? $_POST['action'];
 
 switch ($action){
     case 'getAllPositions' :
@@ -34,8 +34,6 @@ switch ($action){
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $action = $_POST['action'] ?? '';
-
     function clean_input($data) {
         return trim(htmlspecialchars($data, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'));
     }
@@ -49,13 +47,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
 
-        $mime = mime_content_type($file['tmp_name']);
-        $allowed_mime = ['image/jpeg', 'image/png'];
-        if (!in_array($mime, $allowed_mime)) {
-            echo json_encode(["error" => "File MIME type is not allowed"]);
-            exit();
-        }
-
         $candidates_dir =  'assets\images\\' . $type . '\\';
 
         if (!is_dir($candidates_dir)) {
@@ -65,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $new_file_name = $name . '_' . uniqid() . '_' . time() . '.' . $ext;
         $destination = $candidates_dir . $new_file_name;
 
-        if (!move_uploaded_file($file['tmp_name'], $destination)) {
+        if (!move_uploaded_file($file['tmp_name'], '..\\'.$destination)) {
             echo json_encode(["error" => "Failed to move uploaded file"]);
             exit();
         }

@@ -8,8 +8,9 @@ if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
     exit();
 }
 
-// If role is not set or is not 'user' or 'admin', log out
-if (!isset($_SESSION['role']) || !in_array($_SESSION['role'], ['user', 'admin'])) {
+
+// If role is not set or is not 'user', 'admin' or 'super_admin', log out
+if (!isset($_SESSION['role']) || !in_array($_SESSION['role'], ['user', 'admin', 'super_admin'])) {
     header('Location: core/logout');
     exit();
 }
