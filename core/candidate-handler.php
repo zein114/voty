@@ -3,7 +3,7 @@ require_once 'config.php';
 require_once 'lang.php';
 
 // Check if user is logged in and is admin
-if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in'] || $_SESSION['role'] !== 'admin') {
+if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in'] || !in_array($_SESSION['role'], ['super_admin', 'admin'])) {
     http_response_code(403);
     echo json_encode(['success' => false, 'message' => 'Unauthorized']);
     exit();
