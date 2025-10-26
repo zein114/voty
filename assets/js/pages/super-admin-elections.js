@@ -53,7 +53,7 @@ function stopElection(electionId, lang) {
         formData.append('action', 'stopElection');
         formData.append('id_Election', electionId);
 
-        fetch('../core/api.php', {
+        fetch('../apis/api.php', {
             method: 'POST',
             body: formData
         })
@@ -170,7 +170,7 @@ function addElection(lang) {
             formData.append('date_start', startAt);
             formData.append('date_end', endAt);
 
-            fetch('../core/api.php', {
+            fetch('../apis/api.php', {
                 method: 'POST',
                 body: formData
             })
@@ -288,7 +288,7 @@ function addNewCandidate(electionId, lang) {
 
     const selectPosition = document.getElementById('id_position');
     
-    fetch(`../core/api.php?action=getAllPositions`)
+    fetch(`../apis/api.php?action=getAllPositions`)
     .then(res => res.json())
     .then(positions => {
         let name = lang+'_name';
@@ -335,7 +335,7 @@ function addNewCandidate(electionId, lang) {
             formData.append('logo_supporting', logoSupporting.files[0]);
             formData.append('id_position', positionId);
 
-            fetch('../core/api.php', {
+            fetch('../apis/api.php', {
                 method: 'POST',
                 body: formData
             })
@@ -427,7 +427,7 @@ function addNewPosition(electionId, current_lang) {
             formData.append('fr_name', frName);
             formData.append('id_election', electionId);
 
-            fetch('../core/api.php', {
+            fetch('../apis/api.php', {
                 method: 'POST',
                 body: formData
             })
@@ -492,7 +492,7 @@ function getListOfPositions(electionId, lang ) {
 
     const bodyTable = document.getElementById('body-table');
 
-    fetch(`../core/api.php?action=getPositionByElection&id_election=${electionId}`)
+    fetch(`../apis/api.php?action=getPositionByElection&id_election=${electionId}`)
     .then(res => res.json())
     .then(positions => {
         if (positions.length == 0) {
@@ -523,7 +523,7 @@ function publishResults(electionId) {
     formData.append('action', 'publishResults');
     formData.append('id_election', electionId);
 
-    fetch('../core/api.php', {
+    fetch('../apis/api.php', {
         method: 'POST',
         body: formData
     })
@@ -537,7 +537,7 @@ function stopPublishingResults(electionId) {
     formData.append('action', 'stopPublishingResults');
     formData.append('id_election', electionId);
 
-    fetch('../core/api.php', {
+    fetch('../apis/api.php', {
         method: 'POST',
         body: formData
     })

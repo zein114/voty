@@ -2,7 +2,7 @@ function getVotes(){
     const voteData = new FormData();
     voteData.append('action', 'getResults');
 
-    fetch('core/hedera-bridge.php', {
+    fetch('apis/hedera-bridge.php', {
         method: "POST",
         body: voteData
     })

@@ -85,7 +85,7 @@ function initEventListeners() {
 // Load positions
 async function loadPositions() {
     try {
-        const response = await fetch('../core/candidate-handler.php?action=get_positions');
+        const response = await fetch('../apis/candidate-handler.php?action=get_positions');
         const data = await response.json();
         
         if (data.success) {
@@ -145,7 +145,7 @@ function populatePositionsDropdown() {
 // Load candidates
 async function loadCandidates() {
     try {
-        const response = await fetch('../core/candidate-handler.php?action=get_all');
+        const response = await fetch('../apis/candidate-handler.php?action=get_all');
         const data = await response.json();
         
         if (data.success) {
@@ -358,7 +358,7 @@ async function handleSubmit(e) {
     saveBtn.disabled = true;
     
     try {
-        const response = await fetch('../core/candidate-handler.php', {
+        const response = await fetch('../apis/candidate-handler.php', {
             method: 'POST',
             body: formData
         });
@@ -397,7 +397,7 @@ async function handleDelete() {
         formData.append('action', 'delete');
         formData.append('id', deleteTargetId);
         
-        const response = await fetch('../core/candidate-handler.php', {
+        const response = await fetch('../apis/candidate-handler.php', {
             method: 'POST',
             body: formData
         });

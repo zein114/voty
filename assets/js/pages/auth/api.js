@@ -3,7 +3,7 @@ let isCheckingUserId = false;
 // API call function
 export async function apiCall(action, data = {}) {
   try {
-const response = await fetch("auth.php", {
+const response = await fetch("apis/api-auth.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

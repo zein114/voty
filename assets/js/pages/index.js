@@ -46,7 +46,7 @@ function showCandidateList(positionId, lang, voterId) {
 
   listVote.innerHTML = '';
 
-  fetch(`core/api.php?action=getCandidatesByPosition&id_position=${positionId}`)
+  fetch(`apis/api.php?action=getCandidatesByPosition&id_position=${positionId}`)
   .then(res =>res.json())
   .then(candidates => {
     if(candidates.length === 0) {
@@ -103,7 +103,7 @@ function SendVote(candidateId, voterId, positionId, lang) {
   voteData.append('id_voter', voterId);
   voteData.append('id_position', positionId);
 
-  fetch('core/hedera-bridge.php', {
+  fetch('apis/hedera-bridge.php', {
     method: "POST",
     headers: { 'Content_type': 'application/json' },
     body: voteData

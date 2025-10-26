@@ -1,0 +1,16 @@
+{
+    "name": "zein_el_abidine/auth-apis",
+    "autoload": {
+        "psr-4": {
+            "ZeinElAbidine\\AuthApis\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Zein"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 25, 2025 at 11:40 PM
+-- Generation Time: Oct 26, 2025 at 04:36 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -106,46 +106,29 @@ INSERT INTO `position` (`id`, `fr_name`, `en_name`, `ar_name`, `status`, `id_ele
 
 CREATE TABLE `users` (
   `id` int NOT NULL,
-  `user_id` varchar(50) NOT NULL,
-  `username` varchar(255) DEFAULT NULL,
-  `username_arabic` varchar(100) DEFAULT NULL,
-  `date_birth` date DEFAULT NULL,
-  `place_birth` varchar(100) DEFAULT NULL,
-  `surname` varchar(100) DEFAULT NULL,
-  `surname_arabic` varchar(255) DEFAULT NULL,
-  `nationality` varchar(100) DEFAULT NULL,
+  `user_id_hmac` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `nationality_hmac` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `email_encrypted` varchar(512) NOT NULL,
   `role` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'user',
   `password_hash` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `sex` varchar(255) DEFAULT NULL
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `user_id`, `username`, `username_arabic`, `date_birth`, `place_birth`, `surname`, `surname_arabic`, `nationality`, `role`, `password_hash`, `created_at`, `updated_at`, `sex`) VALUES
-(1, '1000000001', 'Kaber Sidi', 'كابر سيدي', '1999-05-12', 'Nouakchott', 'Sidi', 'سيدي', 'Mauritanian', 'super_admin', '$2y$10$DDPXzcf0fHCM2.bw1rs6ruoBz3Qw0bmmSmWfMvPOEtYXkRqoS3PiC', '2025-10-09 20:11:43', '2025-10-25 22:10:08', 'Male'),
-(2, '1000000002', 'Ayman Sidi', 'أيمن محمد', '2004-02-10', 'Nouakchott', 'Mohamed', 'محمد', 'Mauritanian', 'user', '$2y$10$S01d.vIaX.mp16C4G2MsV.Z/SBb7dcBPbChyga2TiwRCXRx29q92e', '2025-10-09 20:11:44', '2025-10-18 18:41:04', 'Male'),
-(3, '1000000003', 'Sara Elhassan', 'سارة الحسن', '2003-11-21', 'Atar', 'Elhassan', 'الحسن', 'Mauritanian', 'user', NULL, '2025-10-09 20:11:44', '2025-10-18 18:41:04', 'Female'),
-(4, '1000000004', 'Mohamed Ali', 'محمد علي', '2002-08-15', 'Rosso', 'Ali', 'علي', 'Mauritanian', 'super_admin', '$2y$10$9WXiTQx9DFjL78OqNW.sN.lYcuwVy4Ab8eJ/GAl9Ps3zD.fhxyyDa', '2025-10-09 20:11:44', '2025-10-25 22:40:06', 'Male'),
-(5, '1000000005', 'Fatima Zahra', 'فاطمة الزهراء', '2001-12-03', 'Kaédi', 'Zahra', 'الزهراء', 'Mauritanian', 'admin', '$2y$10$k6DrfbhOHbLyToqY2Isbs.ccqlQzo1wA9h704xy0XUAUVRj82ELXa', '2025-10-09 20:11:44', '2025-10-25 22:55:42', 'Female'),
-(6, '1000000006', 'Ali Ould Ahmed', 'علي ولد أحمد', '2003-04-07', 'Nouadhibou', 'Ould Ahmed', 'ولد أحمد', 'Mauritanian', 'user', NULL, '2025-10-09 20:11:44', '2025-10-18 18:41:04', 'Male'),
-(7, '1000000007', 'Khadija Mint Saleh', 'خديجة منت صالح', '2004-07-18', 'Tidjikja', 'Mint Saleh', 'منت صالح', 'Mauritanian', 'user', NULL, '2025-10-09 20:11:44', '2025-10-18 18:41:04', 'Female'),
-(8, '1000000008', 'Youssef Ben Omar', 'يوسف بن عمر', '2002-09-25', 'Boutilimit', 'Ben Omar', 'بن عمر', 'Mauritanian', 'user', NULL, '2025-10-09 20:11:44', '2025-10-18 18:41:04', 'Male'),
-(9, '1000000009', 'Amina Mahmoud', 'أمينة محمود', '2003-03-19', 'Nouakchott', 'Mahmoud', 'محمود', 'Mauritanian', 'user', NULL, '2025-10-09 20:11:44', '2025-10-18 18:41:04', 'Female'),
-(10, '1000000010', 'Omar Elhadj', 'عمر الحاج', '2001-10-05', 'Zouerate', 'Elhadj', 'الحاج', 'Mauritanian', 'user', NULL, '2025-10-09 20:11:44', '2025-10-18 18:41:04', 'Male'),
-(11, '1000000011', 'Mouna Abdallah', 'منى عبد الله', '2004-06-14', 'Aleg', 'Abdallah', 'عبد الله', 'Mauritanian', 'user', NULL, '2025-10-09 20:11:44', '2025-10-18 18:41:04', 'Female'),
-(12, '1000000012', 'Hassan Diallo', 'حسن ديالو', '2002-11-08', 'Kaédi', 'Diallo', 'ديالو', 'Mauritanian', 'user', NULL, '2025-10-09 20:11:44', '2025-10-18 18:41:04', 'Male'),
-(13, '1000000013', 'Salma Oumar', 'سلمى عمر', '2003-01-27', 'Nouakchott', 'Oumar', 'عمر', 'Mauritanian', 'user', NULL, '2025-10-09 20:11:44', '2025-10-18 18:41:04', 'Female'),
-(14, '1000000014', 'Rachid Lemine', 'رشيد لمين', '2002-03-16', 'Rosso', 'Lemine', 'لمين', 'Mauritanian', 'user', NULL, '2025-10-09 20:11:44', '2025-10-18 18:41:04', 'Male'),
-(15, '1000000015', 'Noura Hamza', 'نورة حمزة', '2003-09-09', 'Nouadhibou', 'Hamza', 'حمزة', 'Mauritanian', 'user', NULL, '2025-10-09 20:11:45', '2025-10-18 18:41:04', 'Female'),
-(16, '1000000016', 'Adil Bamba', 'عادل بامبا', '2001-05-28', 'Kaédi', 'Bamba', 'بامبا', 'Mauritanian', 'user', NULL, '2025-10-09 20:11:45', '2025-10-18 18:41:04', 'Male'),
-(17, '1000000017', 'Laila Sidi', 'ليلى سيدي', '2004-04-22', 'Nouakchott', 'Sidi', 'سيدي', 'Mauritanian', 'user', NULL, '2025-10-09 20:11:45', '2025-10-18 18:41:04', 'Female'),
-(18, '1000000018', 'Ismail Sow', 'إسماعيل سو', '2003-10-12', 'Kaédi', 'Sow', 'سو', 'Mauritanian', 'user', NULL, '2025-10-09 20:11:45', '2025-10-18 18:41:04', 'Male'),
-(19, '1000000019', 'Hana Abdou', 'هنا عبدو', '2002-12-19', 'Aleg', 'Abdou', 'عبدو', 'Mauritanian', 'user', NULL, '2025-10-09 20:11:45', '2025-10-18 18:41:04', 'Female'),
-(20, '1000000020', 'Zakaria Kane', 'زكريا كان', '2001-11-01', 'Nouakchott', 'Kane', 'كان', 'Mauritanian', 'user', NULL, '2025-10-09 20:11:45', '2025-10-18 18:41:04', 'Male');
+INSERT INTO `users` (`id`, `user_id_hmac`, `nationality_hmac`, `email_encrypted`, `role`, `password_hash`, `created_at`) VALUES
+(1, '6P0tcPVynCO8AMTLWkPn+jqP8wFuaFJUquPPHKICqCM=', 'Mauritanian', '', 'super_admin', '$2y$10$DDPXzcf0fHCM2.bw1rs6ruoBz3Qw0bmmSmWfMvPOEtYXkRqoS3PiC', '2025-10-09 20:11:43'),
+(2, 'AcYqkgbFqszGYv7Sx1QfpI/7U9Pc1KFByDCU86gx4x0=', 'Mauritanian', '', 'user', '$2y$10$S01d.vIaX.mp16C4G2MsV.Z/SBb7dcBPbChyga2TiwRCXRx29q92e', '2025-10-09 20:11:44'),
+(3, 'F7nxTRhdnCmbxlw1SVh0mFEvMrmBZ8WVYHMUTwAXQl0=', 'Mauritanian', '', 'user', NULL, '2025-10-09 20:11:44'),
+(4, '7Ta5LD9Y8NPlE2/z+kOQzR7JYQX7AiwZ5yi8zSf+nYA=', 'Mauritanian', '', 'super_admin', '$2y$10$9WXiTQx9DFjL78OqNW.sN.lYcuwVy4Ab8eJ/GAl9Ps3zD.fhxyyDa', '2025-10-09 20:11:44'),
+(5, '2nQiqlJzFg5VBPKwHXbuTc+RlRSnoZ0hyHg684OlZl0=', 'Mauritanian', '', 'admin', '$2y$10$k6DrfbhOHbLyToqY2Isbs.ccqlQzo1wA9h704xy0XUAUVRj82ELXa', '2025-10-09 20:11:44'),
+(6, 'dr6jw2UmHLK2mcPYZoM6P6+jVIX97D3SXz3q2Oli2UQ=', 'Mauritanian', '', 'user', '$2y$10$LEdyu.TmIdu72zW6g0msHelQpItyi/sAg8NNM8mph6eyJJRxXnrEK', '2025-10-09 20:11:44'),
+(7, 'vko0rlEooCTEMzE1AykWTRLzI1IWKXW6+LRqojM1PG8=', 'Mauritanian', '', 'user', NULL, '2025-10-09 20:11:44'),
+(8, 'erFjToDlo6CBDjwpnPlMohrDByip5E4e53FBIHpmSCA=', 'Mauritanian', '', 'user', NULL, '2025-10-09 20:11:44'),
+(9, 'AwZe0UZp/3yHdpd9Dthb/n8xxUA3hc9AgKlhp56b5LE=', 'Mauritanian', '', 'user', NULL, '2025-10-09 20:11:44'),
+(10, 'LND3xaNN/F7+3wftJmjEHP8zB1/7TM0opnqpeuDPCQ8=', 'Mauritanian', '', 'user', NULL, '2025-10-09 20:11:44');
 
 -- --------------------------------------------------------
 
@@ -188,8 +171,8 @@ ALTER TABLE `position`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `user_id` (`user_id`),
-  ADD KEY `idx_user_id` (`user_id`);
+  ADD UNIQUE KEY `user_id` (`user_id_hmac`),
+  ADD KEY `idx_user_id` (`user_id_hmac`);
 
 --
 -- Indexes for table `users_election`
