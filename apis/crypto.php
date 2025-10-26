@@ -50,34 +50,3 @@ function verify_national_id(string $inputId, string $storedHmac, string $hmacKey
     return hash_equals($computedHmac, $storedHmac);
 }
 
-// // -------- مثال الاستخدام --------
-// $email = "User.Example@Domain.COM ";
-// $nid = "123-45-6789";
-
-// // تشفير البريد
-// $encEmail = encrypt_email(normalize_email($email), $AES_KEY);
-
-// // توليد HMAC للرقم الوطني
-// $nidHmac = hmac_national_id($nid, $HMAC_KEY);
-
-// // -------- حفظ في قاعدة البيانات --------
-// /*
-//     جدول MySQL مقترح:
-
-//     CREATE TABLE voters (
-//         id INT AUTO_INCREMENT PRIMARY KEY,
-//         email_encrypted VARCHAR(512) NOT NULL,
-//         national_id_hmac VARCHAR(64) NOT NULL,
-//         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-//         INDEX (national_id_hmac)
-//     );
-// */
-
-// // مثال استرجاع البيانات وفك التشفير / التحقق
-// $decryptedEmail = decrypt_email($encEmail, $AES_KEY);
-// echo "البريد بعد فك التشفير: $decryptedEmail\n";
-
-// // تحقق من الرقم الوطني
-// $inputNid = "123456789"; // إدخال من المستخدم لاحقًا
-// $isValid = verify_national_id($inputNid, $nidHmac, $HMAC_KEY);
-// echo $isValid ? "رقم وطني مطابق\n" : "رقم وطني غير مطابق\n";
