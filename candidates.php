@@ -19,8 +19,8 @@ include 'includes/header.php';
 ?>
 <?php
     // Fetch positions and candidates
-    $stmtEle = $pdo->prepare("SELECT * FROM election WHERE results = 'publish' ORDER BY id");
-    $stmtEle->execute();
+    $stmtEle = $pdo->prepare("SELECT * FROM election WHERE results = 'publish' AND id IN (SELECT id_election FROM `users_election` WHERE user_id_hmac = ?) ORDER BY id");
+    $stmtEle->execute([$_SESSION['user_id']]);
     $elections = $stmtEle->fetchAll(); 
 
 ?>
@@ -101,7 +101,15 @@ include 'includes/header.php';
             ?>
         <?php endforeach; ?>
     <?php else: ?>
-        <span class="any-election"><?php echo t('any_position', 'Sécurité et transparence dans votre vote...') ?></span>
+        <div class="empty-state">
+          <div class="empty-state-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+            </svg>
+          </div>
+          <h3>No Elections Available</h3>
+          <p>There are currently no active elections.</p>
+        </div>
     <?php endif; ?>
 </div>
 <script src="assets/js/utilities/utils.js" defer></script>

@@ -14,8 +14,14 @@ if (isset($_SESSION['role']) && $_SESSION['role'] === 'user') {
     exit();
 }
 
-// If role is not set or is not 'user', 'admin' or 'super_admin', log out
-if (!isset($_SESSION['role']) || !in_array($_SESSION['role'], ['user', 'admin', 'super_admin'])) {
+// Check if user is super_admin (redirect to super_admin pages)
+if (isset($_SESSION['role']) && $_SESSION['role'] === 'super_admin') {
+    header('Location: ../super_admin/dashboard.php');
+    exit();
+}
+
+// If role is not 'admin', log out
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header('Location: ../core/logout');
     exit();
 }

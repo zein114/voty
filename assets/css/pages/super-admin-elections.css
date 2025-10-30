@@ -22,379 +22,266 @@
     height: 5vh;
     width: 25vh;
     font-size: 1.5vh;
-    color: #06AC7D;
-    background-color: #2a2a2a;
-    border: 2px solid #06AC7D;
+    color: #fff;
+    background-color: #00593f;
+    border: 2px solid #036d4f;
     border-radius: 6px;
     cursor: pointer;
     transition: transform 0.1s ease, background 0.2s ease;
+}
+
+.admin-elections-container .btn-add-election .add-election:hover {
+    background: #00422f;
 }
 
 .admin-elections-container .btn-add-election .add-election:active {
     transform: scale(0.95);
-    background: rgba(6, 172, 125, 0.5);
 }
 
-.admin-elections-container .grid-cards-elections {
+/* Elections Grid */
+.elections-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3%;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
-.admin-elections-container .grid-cards-elections .card-elections {
-    background-color: #2a2a2a;
-    border: 2px solid #06AC7D;
-    border-radius: 6px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5%;
-    padding: 4%;
-    width: 100%;
-}
-
-.admin-elections-container .grid-cards-elections .card-elections .card-election-details {
-    display: flex;
-    justify-content: start;
-    flex-direction: column;
-    width: 100%;
-}
-
-.admin-elections-container .grid-cards-elections .card-elections .card-election-details .card-title {
-    font-size: 2vh;
-    letter-spacing: 0.2vh;
-    font-weight: 600;
-}
-
-.admin-elections-container .grid-cards-elections .card-elections .card-election-details .election-year {
-    font-size: 2.5vh;
-    color: #06AC7D;
-    font-weight: bold;
-    letter-spacing: 1.5vh;
-    margin-bottom: 3%;
-}
-
-.admin-elections-container .grid-cards-elections .card-elections .card-election-details .election-organized-by {
-    font-size: 1.5vh;
-    letter-spacing: 0.5vh;
-}
-
-.admin-elections-container .grid-cards-elections .card-elections .card-election-details .organizer {
-    font-size: 1.8vh;
-    color: #06AC7D;
-    font-weight: 600;
-    letter-spacing: 0.5vh;
-    margin-bottom: 3%;
-}
-
-.admin-elections-container .grid-cards-elections .card-elections .card-election-details .date {
-    margin-top: 1%;
-}
-
-.admin-elections-container .grid-cards-elections .card-elections .card-election-details .date .green {
-    color: #06AC7D;
-    letter-spacing: 0.5vh;
-}
-
-.admin-elections-container .grid-cards-elections .card-elections .card-elections-btns {
-    display: flex;
-    align-items: end;
-    justify-content: flex-end;
-    flex-direction: column;
-    gap: 2%;
-}
-
-.admin-elections-container .grid-cards-elections .card-elections .card-elections-btns .btn-stop {
-    width: 20vh;
-    height: 5vh;
-    background: #FF4444;
-    border: 2px solid #3a3a3a;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: transform 0.1s ease, background 0.2s ease;
-}
-
-.admin-elections-container .grid-cards-elections .card-elections .card-elections-btns .btn-stop:active {
-    transform: scale(0.95);
-    background: rgba(255, 68, 68, 0.5);
-}
-
-.admin-elections-container .grid-cards-elections .card-elections .card-elections-btns .grid-btns-card {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2vh;
-    width: 40vh;
-    margin: 0;
-    margin-top: 3%;
-}
-
-.admin-elections-container .grid-cards-elections .card-elections .card-elections-btns .grid-btns-card .btn-card {
-    width: 20vh;
-    height: 5vh;
+/* Election Card */
+.election-card {
     background: #2a2a2a;
-    color: #06AC7D;
-    border: 2px solid #06AC7D;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: transform 0.1s ease, background 0.2s ease;
-}
-
-.admin-elections-container .grid-cards-elections .card-elections .card-elections-btns .grid-btns-card .btn-card.die {
-    background: #2a2a2a;
-    color: #3a3a3a;
     border: 2px solid #3a3a3a;
-    cursor: auto;
-    transition: none;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
 
-.admin-elections-container .grid-cards-elections .card-elections .card-elections-btns .grid-btns-card .btn-card:active {
-    transform: scale(0.95);
-    background: rgba(6, 172, 125, 0.5);
+.election-card:hover {
+    border-color: #06ac7d;
 }
 
-.admin-elections-container .grid-cards-elections .card-elections .card-elections-btns .grid-btns-card .btn-card.die:active {
-    transform: none;
-    background: none;
-}
-
-.admin-elections-container .modal {
-    display: none;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-}
-
-.admin-elections-container .modal.active  {
-    opacity: 1;
-    background: rgba(42, 42, 42, 0.9);
-    border: 2px solid #3a3a3a;
-    width: auto;
-    height: auto;
-    position: absolute;
-    border-radius: 6px;
+/* Card Header */
+.election-card-header {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    padding: 1.5rem;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 5vh;
-    top: 5%;
-    left: 35%;
+    border-bottom: 2px solid #3a3a3a;
 }
 
-.admin-elections-container .modal .close-icon {
-    margin-right: -110%;
-    margin-top: -10%;
-    cursor: pointer;
-}
-
-.admin-elections-container .modal .title-modal {
-    font-size: 2.5vh;
+.election-year-badge {
+    font-size: 2rem;
+    font-weight: 700;
     color: #06ac7d;
+    letter-spacing: 2px;
 }
 
-.admin-elections-container .modal .form {
-    width: 80%;
-    height: auto;
-    margin: 5vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 3vh;
+.status-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.admin-elections-container .modal .form .input-form {
-    display: flex;
-    justify-content: flex-start;
-    align-items: self-start;
-    flex-direction: column;
-    gap: 1vh;
-}
-
-.admin-elections-container .modal .form .input-form label {
-    color: #06AC7D;
-}
-
-.admin-elections-container .modal .form .input-form input,
-.admin-elections-container .modal .form .input-form select {
-    width: 40vh;
-    background-color: transparent;
-    border: 2px solid #06ac7d;
-    color: #ffffff;
-    border-radius: 6px;
-    box-sizing: border-box;
-    height: 4vh;
-    color: #06AC7D;
-}
-
-.admin-elections-container .modal .form .input-form select option {
-    background-color: #2a2a2a;
-    border: 2px solid #06ac7d;
-    color: #06AC7D;
-}
-
-.admin-elections-container .modal .btn-form {
-    width: 40vh;
-    background-color: transparent;
-    border: 2px solid #06ac7d;
+.status-active {
+    background: rgba(6, 172, 125, 0.15);
     color: #06ac7d;
-    border-radius: 6px;
-    height: 5vh;
-    cursor: pointer;
-    transition: transform 0.1s ease, background 0.2s ease;
-}
-
-.admin-elections-container .modal .btn-form:active {
-    transform: scale(0.95);
-    background: rgba(6, 172, 125, 0.5);
-}
-
-.admin-elections-container .modal table {
-    margin: 3vh;
     border: 1px solid #06ac7d;
-    padding: 1vh;
-    border-radius: 6px;
 }
 
-.admin-elections-container .modal table thead tr th {
-    color: #06AC7D;
-    border-bottom: 1px solid #06ac7d;
+.status-inactive {
+    background: rgba(153, 153, 153, 0.15);
+    color: #999;
+    border: 1px solid #666;
 }
 
-.admin-elections-container .modal table tbody tr td {
-    text-align: center;
-    border-bottom: 1px solid #06ac7d;
+/* Card Body */
+.election-card-body {
+    padding: 1.5rem;
 }
 
-.admin-elections-container .modal table thead .last-element td {
+.election-organizer {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 0 0 1.5rem 0;
+}
+
+.election-dates {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.date-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #ccc;
+    font-size: 0.95rem;
+}
+
+.date-item svg {
+    color: #06ac7d;
+    flex-shrink: 0;
+}
+
+.date-item strong {
+    color: #fff;
+}
+
+/* Card Actions */
+.election-card-actions {
+    padding: 1.5rem;
+    border-top: 2px solid #3a3a3a;
+    background: #1a1a1a;
+}
+
+.btn-block {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.action-buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+}
+
+.btn-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: #2a2a2a;
+    border: 2px solid #3a3a3a;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-action:hover {
+    border-color: #505050;
+}
+
+.btn-action.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    background: #2a2a2a;
+    border-color: #3a3a3a;
+}
+
+.btn-action.disabled:hover {
+    transform: none;
+}
+
+.btn-action svg {
+    flex-shrink: 0;
+}
+
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Optional: unify look */
+input[type=number] {
+  appearance: textfield; /* works for modern browsers */
+}
+
+/* Table styles for positions list modal */
+.positions-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.positions-table thead tr {
+    background: #2a2a2a;
+    border-bottom: 2px solid #3a3a3a;
+}
+
+.positions-table thead th {
+    padding: 1rem;
+    text-align: left;
+    color: #06ac7d;
+    font-weight: 600;
+}
+
+.positions-table tbody tr {
+    border-bottom: 1px solid #3a3a3a;
+}
+
+.positions-table tbody tr:last-child {
     border-bottom: none;
 }
 
-@media (max-width: 1300px) {
-    .admin-elections-container .btn-add-election .add-election {
-        height: 8vh;
-        width: 35vh;
-        font-size: 2vh;
-    }
+.positions-table tbody td {
+    padding: 1rem;
+    color: #ccc;
+}
 
-    .admin-elections-container .grid-cards-elections {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 5%;
-    }
-
-    .admin-elections-container .grid-cards-elections .card-elections {
-        margin-bottom: 10%;
+@media (max-width: 1024px) {
+    .elections-grid {
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     }
 }
 
 @media (max-width: 768px) {
-    .admin-elections-container .text-description {
-        font-size: 2.5vh;
+    .admin-elections-container {
+        margin: 2vh;
+        max-width: 100%;
+        margin-left: 0;
     }
 
-    .admin-elections-container .btn-add-election .add-election {
-        height: 6vh;
-        width: 25vh;
-        font-size: 1.5vh;
-    }
-
-    .admin-elections-container .grid-cards-elections {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    .header-elections {
         flex-direction: column;
-        gap: 5%;
+        align-items: stretch;
     }
 
-    .admin-elections-container .grid-cards-elections .card-elections {
-        margin-bottom: 10%;
+    .btn-add-election .add-election {
         width: 100%;
-        gap: 2%;
     }
 
-    .admin-elections-container .grid-cards-elections .card-elections .card-election-details .card-title {
-        font-size: 2vh;
-        letter-spacing: 0.3vh;
+    .elections-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
-    .admin-elections-container .grid-cards-elections .card-elections .card-election-details .election-year {
-        font-size: 2vh;
-        letter-spacing: 0.5vh;
+    .election-card-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
     }
 
-    .admin-elections-container .grid-cards-elections .card-elections .card-election-details .election-organized-by {
-        font-size: 1.5vh;
-    }
-
-    .admin-elections-container .grid-cards-elections .card-elections .card-election-details .organizer {
-        font-size: 1.6vh;
-    }
-
-    .admin-elections-container .grid-cards-elections .card-elections .card-election-details .date {
-        font-size: 1.4vh;
-    }
-
-    .admin-elections-container .grid-cards-elections .card-elections .card-election-details .date .green {
-        letter-spacing: 0.2vh;
-    }
-
-    .admin-elections-container .grid-cards-elections .card-elections .card-elections-btns .btn-stop {
-        width: 18vh;
-        height: 5vh;
-    }
-
-    .admin-elections-container .grid-cards-elections .card-elections .card-elections-btns .grid-btns-card {
-        width: 38vh;
-    }
-
-    .admin-elections-container .grid-cards-elections .card-elections .card-elections-btns .grid-btns-card .btn-card {
-        width: 18vh;
-        height: 5vh;
+    .action-buttons-grid {
+        grid-template-columns: 1fr;
     }
 }
 
-@media (max-width: 532px) {    
-    .admin-elections-container .text-description {
-        font-size: 1.6vh;
-    }
-    .admin-elections-container .grid-cards-elections .card-elections .card-election-details .card-title {
-        font-size: 1.4vh;
+@media (max-width: 480px) {
+    .admin-elections-container {
+        padding: 1rem;
     }
 
-    .admin-elections-container .grid-cards-elections .card-elections .card-election-details .election-year {
-        font-size: 1.5vh;
+    .election-year-badge {
+        font-size: 1.5rem;
     }
 
-    .admin-elections-container .grid-cards-elections .card-elections .card-election-details .election-organized-by {
-        font-size: 1.3vh;
+    .election-organizer {
+        font-size: 1.25rem;
     }
 
-    .admin-elections-container .grid-cards-elections .card-elections .card-election-details .organizer {
-        font-size: 1.4vh;
-    }
-
-    .admin-elections-container .grid-cards-elections .card-elections .card-election-details .date {
-        font-size: 1.2vh;
-    }
-
-    .admin-elections-container .grid-cards-elections .card-elections .card-election-details .date .green {
-        letter-spacing: 0.2vh;
-    }
-
-    .admin-elections-container .grid-cards-elections .card-elections .card-elections-btns .btn-stop {
-        width: 12vh;
-        height: 3vh;
-        font-size: 50%;
-    }
-
-    .admin-elections-container .grid-cards-elections .card-elections .card-elections-btns .grid-btns-card {
-        width: 25vh;
-    }
-
-    .admin-elections-container .grid-cards-elections .card-elections .card-elections-btns .grid-btns-card .btn-card {
-        width: 11vh;
-        height: 3vh;
-        font-size: 50%;
+    .btn-action {
+        font-size: 0.85rem;
+        padding: 0.65rem 0.85rem;
     }
 }

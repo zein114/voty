@@ -288,13 +288,14 @@
 }
 
 .modal-overlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(4px);
+  z-index: -1;
 }
 
 .modal-content {
@@ -385,9 +386,6 @@
 }
 
 /* Form Sections */
-.form-section {
-  margin-bottom: 2rem;
-}
 
 .form-section h3 {
   font-size: 1.25rem;
@@ -415,6 +413,11 @@
   color: #ccc;
 }
 
+.form-group h6 .required {
+  color: #ff4444;
+  margin-left: 0.25rem;
+}
+
 .form-group input,
 .form-group textarea,
 .form-group select {
@@ -424,7 +427,7 @@
   border-radius: 8px;
   color: #fff;
   font-size: 1rem;
-  padding: 0.75rem;
+  padding: 0.4rem;
   transition: all 0.3s ease;
 }
 

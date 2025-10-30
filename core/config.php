@@ -1,7 +1,7 @@
 <?php
 // Database configuration
 $host = 'localhost';
-$dbname = 'vote';
+$dbname = 'voty';
 $username = 'root';
 $password = '';
 

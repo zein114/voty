@@ -148,6 +148,7 @@ return [
 
     // Admin Candidates page
     'manage_candidates' => 'إدارة المرشحين',
+    'upload_list_voters' => 'رفع قائمة الناخبين',  
     'add_candidate' => 'إضافة مرشح',
     'edit_candidate' => 'تعديل المرشح',
     'basic_information' => 'المعلومات الأساسية',
@@ -165,6 +166,7 @@ return [
     'candidate_photo' => 'صورة المرشح',
     'photo' => 'الصورة',
     'upload_image' => 'رفع صورة',
+    'upload_excel' => 'رفع ملف Excel',
     'save' => 'حفظ',
     'cancel' => 'إلغاء',
     'delete' => 'حذف',

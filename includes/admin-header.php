@@ -30,19 +30,6 @@ require_once '../core/lang.php'; ?>
       </a>
     </div>
 
-    <div class="sidebar-search">
-      <span class="icon">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-          xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" />
-          <path d="M20 20L17 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-        </svg>
-      </span>
-      <input id="adminSidebarSearch" type="search"
-        placeholder="<?php echo t('search', 'Rechercher'); ?>"
-        aria-label="<?php echo t('search', 'Rechercher'); ?>" />
-    </div>
-
     <div class="sidebar-sections">
 
       <div class="sidebar-section">
@@ -137,20 +124,6 @@ require_once '../core/lang.php'; ?>
       <div class="sidebar-section">
         <div class="sidebar-separator"></div>
         <ul class="nav-list">
-          <li>
-            <a class="nav-link" href="../">
-              <span class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                  viewBox="0 0 24 24" stroke-width="1.5"
-                  stroke="currentColor" class="size-6">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                    d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-                </svg>
-              </span>
-              <span class="label"><?php echo t('site_home', 'Accueil du site'); ?></span>
-            </a>
-          </li>
-
           <li>
             <a class="nav-link nav-danger" href="../core/logout.php" id="logoutBtn">
               <span class="icon">

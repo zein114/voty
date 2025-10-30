@@ -149,6 +149,7 @@ return [
 
     // Admin Candidates page
     'manage_candidates' => 'Gérer les candidats',
+    'upload_list_voters' => 'Télécharger la liste des électeurs',  
     'add_candidate' => 'Ajouter un candidat',
     'edit_candidate' => 'Modifier le candidat',
     'basic_information' => 'Informations de base',
@@ -166,6 +167,7 @@ return [
     'candidate_photo' => 'Photo du candidat',
     'photo' => 'Photo',
     'upload_image' => 'Télécharger une image',
+    'upload_excel' => 'Télécharger un fichier Excel',
     'save' => 'Enregistrer',
     'cancel' => 'Annuler',
     'delete' => 'Supprimer',

@@ -14,6 +14,7 @@ require_once '../core/lang.php'; ?>
   <link rel="stylesheet" href="../assets/css/layout/admin-header.css" />
   <link rel="stylesheet" href="../assets/css/pages/super-admin-dashboard.css" />
   <link rel="stylesheet" href="../assets/css/pages/super-admin-elections.css" />
+  <link rel="stylesheet" href="../assets/css/pages/super-admin-settings.css" />
   <link rel="stylesheet" href="../assets/css/pages/super-admin-candidates.css" />
   <link rel="stylesheet" href="../assets/css/pages/super-admin-results.css" />
   <link rel="stylesheet" href="../assets/css/layout/admin-footer.css" />
@@ -28,19 +29,6 @@ require_once '../core/lang.php'; ?>
         <img src="../assets/images/voty.svg" alt="Voty" class="brand-icon" />
         <span class="brand-name">Voty</span>
       </a>
-    </div>
-
-    <div class="sidebar-search">
-      <span class="icon">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-          xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" />
-          <path d="M20 20L17 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-        </svg>
-      </span>
-      <input id="adminSidebarSearch" type="search"
-        placeholder="<?php echo t('search', 'Rechercher'); ?>"
-        aria-label="<?php echo t('search', 'Rechercher'); ?>" />
     </div>
 
     <div class="sidebar-sections">
@@ -88,7 +76,7 @@ require_once '../core/lang.php'; ?>
                         </defs>
                         <polyline class="a" points="11.89 31.343 8.409 31.343 4.5 37.774 42.642 37.774 38.733 31.343 37.195 31.343" id="polyline1" style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#7d7d7d;stroke-opacity:1"/>
                         <polyline class="a" points="28.091 20.141 16.258 16.629 10.784 35.07 36.089 35.07 39.514 23.532 31.648 21.197" id="polyline2" style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#7d7d7d;stroke-opacity:1"/>
-                        <path class="a" d="m 32.5222,15.2134 c -0.749,1.4979 -3.69,3.9823 -3.9458,4.3659 -0.2558,0.3836 -2.4113,2.2651 -0.9681,3.4708 1.4432,1.2057 3.7083,-1.6989 4.4389,-2.1921 0.7306,-0.4932 4.3112,-1.4614 5.0784,-2.1007 0.7672,-0.6393 1.8267,-1.3153 2.1007,-1.9912 l -1.4979,-4.75 c 0,0 -6.4484,-0.11 -7.307,0 -0.8586,0.11 -4.4639,4.9343 -3.9274,6.3753 0.6393,1.7173 2.8556,0.4065 2.8556,0.4065" id="path2" style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#7d7d7d;stroke-opacity:1"/>
+                        <path class="a" d="m 32.5222,15.2134 c -0.749,1.4979 -3.69,3.9823 -3.9458,4.3659 -0.2558,0.3836 -2.4113,2.2651 -0.9681,3.4708 1.4432,1.2057 3.7083,-1.6989 4.4389,-2.1921 0.7306,-0.4932 4.3112,-1.4614 5.0784,-2.1007 0.7672,-0.6393 1.8267,-1.3153 2.1007-1.9912 l -1.4979,-4.75 c 0,0 -6.4484,-0.11 -7.307,0 -0.8586,0.11 -4.4639,4.9343 -3.9274,6.3753 0.6393,1.7173 2.8556,0.4065 2.8556,0.4065" id="path2" style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#7d7d7d;stroke-opacity:1"/>
                         <polyline class="a" points="37.728 12.017 41.108 10.226 43.5 16.629 39.226 16.766" id="polyline3" style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#7d7d7d;stroke-opacity:1"/>
                       </g>
                     </g>
@@ -100,35 +88,18 @@ require_once '../core/lang.php'; ?>
           </li>
 
           <li>
-            <a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'admin-candidates.php'
+            <a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'admin-settings.php'
                 ? 'active'
-                : ''; ?>" href="admin-candidates.php">
-              <span class="icon">
-                <svg width="20" height="20" fill="#7d7d7d" viewBox="0 0 32 32"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    transform="translate(5, 0)"
-                    d="M23.313 26.102l-6.296-3.488c2.34-1.841 2.976-5.459 2.976-7.488v-4.223c0-2.796-3.715-5.91-7.447-5.91-3.73 0-7.544 3.114-7.544 5.91v4.223c0 1.845 0.78 5.576 3.144 7.472l-6.458 3.503s-1.688 0.752-1.688 1.689v2.534c0 0.933 0.757 1.689 1.688 1.689h21.625c0.931 0 1.688-0.757 1.688-1.689v-2.534c0-0.994-1.689-1.689-1.689-1.689zM23.001 30.015h-21.001v-1.788c0.143-0.105 0.344-0.226 0.502-0.298l6.459-3.503c0.589-0.32 0.979-0.912 1.039-1.579s-0.219-1.32-0.741-1.739c-1.677-1.345-2.396-4.322-2.396-5.911v-4.223c0-1.437 2.708-3.91 5.544-3.91 2.889 0 5.447 2.44 5.447 3.91v4.223c0 1.566-0.486 4.557-2.212 5.915-0.528 0.416-0.813 1.07-0.757 1.739s0.446 1.267 1.035 1.589l6.296 3.488c0.055 0.03 0.126 0.063 0.184 0.089 0.148 0.063 0.329 0.167 0.462 0.259v1.809z" />
-                </svg>
-              </span>
-              <span class="label"><?php echo t('candidates', 'Candidats'); ?></span>
-            </a>
-          </li>
-
-          <li>
-            <a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'admin-results.php'
-                ? 'active'
-                : ''; ?>" href="admin-results.php">
+                : ''; ?>" href="admin-settings.php">
               <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                  viewBox="0 0 23 23" stroke-width="1.5" stroke="currentColor">
+                  viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z" />
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z" />
+                    d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                 </svg>
               </span>
-              <span class="label"><?php echo t('results', 'Résultats'); ?></span>
+              <span class="label"><?php echo t('settings', 'Paramètres'); ?></span>
             </a>
           </li>
         </ul>
@@ -137,20 +108,6 @@ require_once '../core/lang.php'; ?>
       <div class="sidebar-section">
         <div class="sidebar-separator"></div>
         <ul class="nav-list">
-          <li>
-            <a class="nav-link" href="../">
-              <span class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                  viewBox="0 0 24 24" stroke-width="1.5"
-                  stroke="currentColor" class="size-6">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                    d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-                </svg>
-              </span>
-              <span class="label"><?php echo t('site_home', 'Accueil du site'); ?></span>
-            </a>
-          </li>
-
           <li>
             <a class="nav-link nav-danger" href="../core/logout.php" id="logoutBtn">
               <span class="icon">

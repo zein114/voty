@@ -1,6 +1,7 @@
 <?php
 require_once '../core/config.php';
 require_once '../core/lang.php';
+require_once 'auth-helpers.php';
 
 // Check if user is logged in and is admin
 if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in'] || !in_array($_SESSION['role'], ['super_admin', 'admin'])) {
@@ -46,14 +47,16 @@ function getAllCandidates() {
     global $pdo;
     
     $lang = $_SESSION['current_lang'];
+    $user_id = getCurrentUserDbId($pdo);
 
     $stmt = $pdo->prepare("
-        SELECT c.*, p.*  
+        SELECT c.*, p.fr_name, p.ar_name, p.en_name
         FROM candidates c 
         LEFT JOIN position p ON c.id_position = p.id 
+        WHERE p.id_election IN (SELECT id FROM election WHERE id IN (SELECT election_id FROM election_admins WHERE admin_user_id = ?))  
         ORDER BY c.id DESC
     ");
-    $stmt->execute();
+    $stmt->execute([$user_id]);
     $candidates = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     foreach ($candidates as &$c) {

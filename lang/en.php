@@ -150,6 +150,7 @@ return [
 
     // Admin Candidates page
     'manage_candidates' => 'Manage Candidates',
+    'upload_list_voters' => 'Download the list of voters',  
     'add_candidate' => 'Add Candidate',
     'edit_candidate' => 'Edit Candidate',
     'basic_information' => 'Basic Information',
@@ -167,11 +168,12 @@ return [
     'candidate_photo' => 'Candidate Photo',
     'photo' => 'Photo',
     'upload_image' => 'Upload image',
+    'upload_excel' => 'Upload Excel file',
     'save' => 'Save',
     'cancel' => 'Cancel',
     'delete' => 'Delete',
     'confirm_delete' => 'Confirm Delete',
-    'delete_candidate_confirm' => 'Are you sure you want to delete this candidate?',
+    'delete_candidate_confirm' => 'Are you sure you want to delete this candidate?',  
 
     //candidates
     'list_of_candidates' => 'List of candidates',

@@ -4,6 +4,13 @@ let positions = [];
 let currentEditId = null;
 let deleteTargetId = null;
 
+// SVG Icons
+const ICONS = {
+    user: '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    edit: '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13M18.5 2.5C18.8978 2.1022 19.4374 1.87868 20 1.87868C20.5626 1.87868 21.1022 2.1022 21.5 2.5C21.8978 2.8978 22.1213 3.43739 22.1213 4C22.1213 4.56261 21.8978 5.1022 21.5 5.5L12 15L8 16L9 12L18.5 2.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    delete: '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 6H5H21M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+};
+
 // DOM Elements
 const candidatesGrid = document.getElementById('candidatesGrid');
 // const addCandidateBtn = document.getElementById('addCandidateBtn');
@@ -46,7 +53,12 @@ const deleteLabel = (adminContainer && adminContainer.dataset && adminContainer.
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     loadPositions();
-    loadCandidates();
+    const electionId = getQueryParam('id_election');
+    if (electionId) {
+        loadCandidatesByElection(electionId);
+    } else {
+        loadCandidates();
+    }
     initEventListeners();
 });
 
@@ -142,7 +154,7 @@ function populatePositionsDropdown() {
     });
 }
 
-// Load candidates
+// Load candidates (all)
 async function loadCandidates() {
     try {
         const response = await fetch('../apis/candidate-handler.php?action=get_all');
@@ -158,14 +170,30 @@ async function loadCandidates() {
     }
 }
 
+// Load candidates filtered by election
+async function loadCandidatesByElection(idElection) {
+    try {
+        const res = await fetch(`../apis/api.php?action=getCandidatesByElection&id_election=${encodeURIComponent(idElection)}`);
+        const list = await res.json();
+        candidates = Array.isArray(list) ? list : [];
+        if (candidates.length === 0) {
+            // Fallback: show all candidates if none linked to this election
+            await loadCandidates();
+            return;
+        }
+        renderCandidates();
+    } catch (error) {
+        console.error('Error loading candidates by election:', error);
+        notify('Failed to load candidates', 'error');
+    }
+}
+
 // Render candidates
 function renderCandidates() {
     if (candidates.length === 0) {
         candidatesGrid.innerHTML = `
             <div class="empty-state">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                ${ICONS.user}
                 <h3>No candidates yet</h3>
                 <p>Start by adding your first candidate</p>
             </div>
@@ -189,7 +217,6 @@ function renderCandidates() {
 function createCandidateCard(candidate) {
     const photoSrc = candidate.photo_path ? `..\\${candidate.photo_path}` : '..\\assets\\images\\candidates\\profile\\candidate-placeholder.png';
     const logoSrc = candidate.path_supporting_party_logo ? `..\\${candidate.path_supporting_party_logo}` : '..\\assets\\images\\candidates\\party\\party-placeholder.jpg';
-    const positionName = candidate.position_name || 'No position';
 
     let displayName = candidate.name;
     let displayDesc = candidate.en_description;
@@ -204,13 +231,15 @@ function createCandidateCard(candidate) {
         displayDesc = candidate.en_description;
     }
     
+    const noElectionBadge = (!candidate.id_position && !candidate.position_election_id) ? '<div class="candidate-no-election">No selected election</div>' : '';
+
     return `
         <div class="candidate-card">
             <div class="candidate-header">
                 <img src="${photoSrc}" alt="${candidate.name}" class="candidate-photo">
                 <div class="candidate-info">
                     <div class="candidate-name">${escapeHtml(displayName)}</div>
-                    <div class="candidate-position">${escapeHtml(positionName)}</div>
+                    ${noElectionBadge}
                     <div class="candidate-party">
                         <img src="${logoSrc}" alt="${candidate.Supporting_party}" class="party-logo">
                         <span class="party-name">${escapeHtml(candidate.Supporting_party)}</span>
@@ -222,15 +251,11 @@ function createCandidateCard(candidate) {
             </div>
             <div class="candidate-actions">
                 <button class="icon-btn edit-btn" data-id="${candidate.id}">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13M18.5 2.5C18.8978 2.1022 19.4374 1.87868 20 1.87868C20.5626 1.87868 21.1022 2.1022 21.5 2.5C21.8978 2.8978 22.1213 3.43739 22.1213 4C22.1213 4.56261 21.8978 5.1022 21.5 5.5L12 15L8 16L9 12L18.5 2.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                    ${ICONS.edit}
                     <span>${escapeHtml(editLabel)}</span>
                 </button>
                 <button class="icon-btn delete-btn" data-id="${candidate.id}">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3 6H5H21M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                    ${ICONS.delete}
                     <span>${escapeHtml(deleteLabel)}</span>
                 </button>
             </div>
@@ -433,108 +458,31 @@ function showMissingCandidateNote(id) {
     const missing = [];
     const photoMissing = !cand.photo_path || String(cand.photo_path).includes('candidate-placeholder.png');
     const logoMissing = !cand.path_supporting_party_logo || String(cand.path_supporting_party_logo).includes('party-placeholder.jpg');
-    const positionMissing = !cand.id_position;
     const partyMissing = !cand.Supporting_party || String(cand.Supporting_party).trim() === '';
     if (photoMissing) missing.push('profile photo');
     if (logoMissing) missing.push('party logo');
-    if (positionMissing) missing.push('position');
     if (partyMissing) missing.push('party');
     if (missing.length > 0) {
         notify(`Note: Missing ${missing.join(', ')}`, 'gray');
     }
 }
 
-// Local toast implementation (scoped to this page)
-const showToastLocal = (function() {
-    const activeToasts = new Map();
-
-    function getContainer() {
-        let el = document.getElementById('toastContainer');
-        if (!el) {
-            el = document.createElement('div');
-            el.id = 'toastContainer';
-            el.className = 'toast-container';
-            document.body.appendChild(el);
-        }
-        return el;
-    }
-
-    function removeToast(toast, key, skipAnimation = false) {
-        if (skipAnimation) {
-            toast.classList.add('removing');
-            setTimeout(() => {
-                toast.remove();
-                activeToasts.delete(key);
-            }, 50);
-            return;
-        }
-        toast.style.transform = '';
-        toast.style.opacity = '';
-        toast.style.transition = '';
-        toast.classList.remove('show');
-        toast.classList.add('removing');
-        setTimeout(() => {
-            toast.remove();
-            activeToasts.delete(key);
-        }, 300);
-    }
-
-    return function showToastLocal(message, type = 'error') {
-        const container = getContainer();
-
-        if (activeToasts.has(message)) {
-            const item = activeToasts.get(message);
-            item.counter.count++;
-            item.counter.element.textContent = item.counter.count;
-            item.counter.element.style.display = 'flex';
-            clearTimeout(item.timeout);
-            item.timeout = setTimeout(() => removeToast(item.element, message), 5000);
-            return;
-        }
-
-        const toast = document.createElement('div');
-        toast.className = `toast ${type}`;
-        toast.innerHTML = `
-            <div class="toast-icon ${type}"></div>
-            <div class="toast-message">${message}</div>
-            <div class="toast-counter">1</div>
-            <button class="toast-close">×</button>
-        `;
-
-        container.appendChild(toast);
-
-        const counterEl = toast.querySelector('.toast-counter');
-        counterEl.style.display = 'none';
-
-        const closeBtn = toast.querySelector('.toast-close');
-        closeBtn.addEventListener('click', () => removeToast(toast, message));
-
-        const timeout = setTimeout(() => removeToast(toast, message), 5000);
-        activeToasts.set(message, {
-            element: toast,
-            counter: { element: counterEl, count: 1 },
-            timeout
-        });
-
-        // Trigger show animation with double rAF for consistency
-        void toast.offsetHeight;
-        const triggerShow = () => toast.classList.add('show');
-        if (window.requestAnimationFrame) {
-            requestAnimationFrame(() => requestAnimationFrame(triggerShow));
-        } else {
-            setTimeout(triggerShow, 16);
-        }
-    };
-})();
-
+// Notification function
 function notify(message, type = 'error') {
+    // Use global toast if available, otherwise fallback to console
+    if (typeof showToast === 'function') {
+        showToast(message, type);
+    } else {
+        console[type === 'error' ? 'error' : 'log'](message);
+    }
+}
+
+// Helpers
+function getQueryParam(key) {
     try {
-        showToastLocal(message, type);
-    } catch (e) {
-        if (type === 'error') {
-            console.error(message);
-        } else {
-            console.log(message);
-        }
+        const params = new URLSearchParams(window.location.search);
+        return params.get(key);
+    } catch (_) {
+        return null;
     }
 }
