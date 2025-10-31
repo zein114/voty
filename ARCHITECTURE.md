@@ -62,7 +62,7 @@
 │  ┌────────────────────────────────────────────────────────────────┐  │
 │  │          Hedera Consensus Service (HCS)                        │  │
 │  │                                                                │  │
-│  │  Topic ID: 0.0.7116561                                        │  │
+│  │  Topic ID: 0.0.7168101                                        │  │
 │  │  Memo: "Voty - Decentralized Voting Platform"                 │  │
 │  │                                                                │  │
 │  │  ┌──────────────────────────────────────────────────────┐    │  │
@@ -86,7 +86,7 @@
 │  │  │        Hedera Mirror Nodes (Public Archive)          │    │  │
 │  │  │                                                      │    │  │
 │  │  │  Endpoint: testnet.mirrornode.hedera.com            │    │  │
-│  │  │  Path: /api/v1/topics/0.0.7116561/messages          │    │  │
+│  │  │  Path: /api/v1/topics/0.0.7168101/messages          │    │  │
 │  │  │                                                      │    │  │
 │  │  │  Features:                                           │    │  │
 │  │  │  ✅ Public REST API (no authentication)             │    │  │
@@ -160,7 +160,7 @@
 │  Step B: HCS Submission                                  │      │
 │  ┌───────────────────────────────────────────────────┐  │      │
 │  │ const tx = new TopicMessageSubmitTransaction({   │  │──────┘
-│  │   topicId: '0.0.7116561',                        │  │ 3. Submit to HCS
+│  │   topicId: '0.0.7168101',                        │  │ 3. Submit to HCS
 │  │   message: JSON.stringify({                       │  │    Cost: $0.0001
 │  │     candidateId, voterId, positionId             │  │
 │  │   })                                              │  │
