@@ -125,7 +125,7 @@ Our platform executes the following Hedera SDK transactions:
 │  ┌────────────────┐  │      │  ┌───────────────────────────┐  │
 │  │ Elections      │  │      │  │  Hedera Consensus Service │  │
 │  │ Candidates     │  │      │  │  (HCS Topic ID:           │  │
-│  │ Positions      │  │      │  │   0.0.7116561)            │  │
+│  │ Positions      │  │      │  │   0.0.7168101)            │  │
 │  │ Users          │  │      │  └───────────┬───────────────┘  │
 │  │ Vote Metadata  │  │      │              │                   │
 │  └────────────────┘  │      │              │ Consensus         │
@@ -292,11 +292,11 @@ php -S localhost:8000
 | Resource Type | Testnet ID | Purpose |
 |--------------|------------|---------|
 | **Operator Account** | `0.0.7103057` | Account funding HCS transactions |
-| **HCS Topic** | `0.0.7116561` | Stores all votes as consensus messages |
+| **HCS Topic** | `0.0.7168101` | Stores all votes as consensus messages |
 | **Mirror Node API** | `testnet.mirrornode.hedera.com` | Public vote verification endpoint |
 
 **Verification Links:**
-- **Topic Messages**: [https://testnet.mirrornode.hedera.com/api/v1/topics/0.0.7116561/messages](https://testnet.mirrornode.hedera.com/api/v1/topics/0.0.7116561/messages)
+- **Topic Messages**: [https://testnet.mirrornode.hedera.com/api/v1/topics/0.0.7116561/messages](https://testnet.mirrornode.hedera.com/api/v1/topics/0.0.7168101/messages)
 - **Account Details**: [https://hashscan.io/testnet/account/0.0.7103057](https://hashscan.io/testnet/account/0.0.7103057)
 
 > **Note**: These are Testnet IDs for demonstration. Mainnet deployment would use production account IDs.
