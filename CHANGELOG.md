@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Added - Core Features
 - **Hedera Consensus Service (HCS) Integration**
   - Vote submission via `TopicMessageSubmitTransaction`
-  - Immutable vote storage on HCS Topic (0.0.7116561)
+  - Immutable vote storage on HCS Topic (0.0.7168101)
   - Real-time vote retrieval via Mirror Node API
   - Duplicate vote prevention using historical message verification
   
@@ -72,7 +72,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - .gitignore for sensitive data protection
 
 ### Hedera Metrics
-- **Topic ID**: 0.0.7116561
+- **Topic ID**: 0.0.7168101
 - **Operator Account**: 0.0.7103057
 - **Transaction Cost**: $0.0001 per vote
 - **Average Finality**: ~3 seconds
