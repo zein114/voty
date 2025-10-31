@@ -1,0 +1,187 @@
+:root {
+  --dark-bg: #2a2a2a;
+  --darker-bg: #1a1a1a;
+  --text-color: #ffffff;
+  --light-green: #06ac7d;
+  --hover-color: #3a3a3a;
+}
+
+.results-container {
+  max-width: 960px;
+  min-height: 80vh;
+  margin: 5vh auto;
+}
+
+/* Match candidates page header styles */
+.header {
+  margin-bottom: 40px;
+  padding: 30px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #252525 100%);
+  border-radius: 16px;
+  border: 2px solid #3a3a3a;
+}
+
+.header .title {
+  color: #06ac7d;
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.header .year {
+  color: #ffffff;
+  font-size: 48px;
+  font-weight: 400;
+  margin: 10px 0;
+  line-height: 0.8;
+}
+
+.header .organizer {
+  color: #b0b0b0;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 12px 0 20px 0;
+}
+
+.header .organizer .green {
+  color: #06ac7d;
+  font-weight: 600;
+}
+
+.header h1 {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 0;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 2px solid #3a3a3a;
+}
+
+.header h1 span {
+  color: #06ac7d;
+}
+
+.position-header {
+  padding: 22px 20px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #06ac7d;
+  text-align: left;
+  letter-spacing: 0.5px;
+}
+
+html[dir="rtl"] .position-header {
+  text-align: right;
+}
+
+
+.election-results {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 40px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #252525 100%);
+  border: 2px solid #3a3a3a;
+  border-radius: 14px;
+}
+
+.candidate-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-radius: 0;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.candidate-item:last-child {
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.separator-line {
+  height: 2px;
+  background: #333;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.candidate-item:last-child .separator-line {
+  display: none;
+}
+
+.candidate-item.winner {
+  background: linear-gradient(90deg, #1a1a1a, #004d26);
+  border-left: 4px solid var(--light-green);
+}
+
+.candidate-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 1;
+}
+
+.photo-candidate {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #06ac7d;
+  flex-shrink: 0;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.union {
+  color: #06ac7d; 
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.union-logo {
+  width: 30px;
+  height: 30px;
+  margin: 0 20px;
+  border-radius: 100%;
+}
+
+.percentage {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.win-percent {
+  color: var(--light-green);
+}
+
+@media (max-width: 768px) {
+  .candidate-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .candidate-info {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .union, .percentage {
+    width: auto;
+    text-align: left;
+  }
+
+  .union-logo {
+    margin: 10px 0;
+  }
+}

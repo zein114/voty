@@ -1,0 +1,20 @@
+0000000000000000000000000000000000000000 209c8b584d5d86c0d093960ea98c66d50c46a655 kabermedhasni <kabermedhasni653@gmail.com> 1761808698 +0000	commit (initial): first deployment
+209c8b584d5d86c0d093960ea98c66d50c46a655 df57f69fa09bae6d032ba8b6af0d682268485d46 kabermedhasni <kabermedhasni653@gmail.com> 1761818291 +0000	commit: multi admins dropdown
+df57f69fa09bae6d032ba8b6af0d682268485d46 a03afad28bafa58a2dd3a909fc7e26d854b3fda3 kabermedhasni <kabermedhasni653@gmail.com> 1761820644 +0000	commit: fix redirection properties
+a03afad28bafa58a2dd3a909fc7e26d854b3fda3 f7aa2aa07d2262073acb4ea51e747c6918211486 kabermedhasni <kabermedhasni653@gmail.com> 1761829248 +0000	commit: updates like admin and super-admin managing pages
+f7aa2aa07d2262073acb4ea51e747c6918211486 a4ec0b7adc4ce935efdb27559c5804b308e026cd kabermedhasni <kabermedhasni653@gmail.com> 1761843397 +0000	commit: final changes on the backend
+a4ec0b7adc4ce935efdb27559c5804b308e026cd b7baca52e9b10a2af4f1ec882b3497f13fae7532 kabermedhasni <kabermedhasni653@gmail.com> 1761846834 +0000	commit: dropdown integration and unnecassary file deletion
+b7baca52e9b10a2af4f1ec882b3497f13fae7532 cf5d5afbcd31d05d30c7e104e2869f58a3ca35bb kabermedhasni <kabermedhasni653@gmail.com> 1761847022 +0000	commit: edit position fix
+cf5d5afbcd31d05d30c7e104e2869f58a3ca35bb 6461b894db0cf55c7abfb1aa754d1678c485c0ac kabermedhasni <kabermedhasni653@gmail.com> 1761847814 +0000	commit: small edits
+6461b894db0cf55c7abfb1aa754d1678c485c0ac 3e7e8fb9e53c364080d6fa4f1c9a816de9998946 kabermedhasni <kabermedhasni653@gmail.com> 1761847960 +0000	commit: delete modal updates
+3e7e8fb9e53c364080d6fa4f1c9a816de9998946 60abd63785bf48ef5506c3205ff6b2f3be6019d0 kabermedhasni <kabermedhasni653@gmail.com> 1761850718 +0000	commit: dropdown final updates
+60abd63785bf48ef5506c3205ff6b2f3be6019d0 5e192830431d015240692b522550783a47ff3e4f kabermedhasni <kabermedhasni653@gmail.com> 1761853016 +0000	commit: searchbars configurations
+5e192830431d015240692b522550783a47ff3e4f 2260365e315984a6393a874f9644db6201800f5a kabermedhasni <kabermedhasni653@gmail.com> 1761854189 +0000	commit: searchbar implimentation for the results
+2260365e315984a6393a874f9644db6201800f5a a6ea3234ddb55bb251eeef62679647130a7a67a8 kabermedhasni <kabermedhasni653@gmail.com> 1761858147 +0000	commit: dropdown review and fix
+a6ea3234ddb55bb251eeef62679647130a7a67a8 393de62a5ceec4e2b3fe9c69f650f2db79d640a6 kabermedhasni <kabermedhasni653@gmail.com> 1761858629 +0000	commit: fix all search bars problems but still the select dropdown
+393de62a5ceec4e2b3fe9c69f650f2db79d640a6 13bde3c8e035c284777b1ed710b0e5f8e0ea75f2 kabermedhasni <kabermedhasni653@gmail.com> 1761859027 +0000	commit: updates done
+13bde3c8e035c284777b1ed710b0e5f8e0ea75f2 f12dd34d04d4874035d7f9169c014aa3f582e4d1 kabermedhasni <kabermedhasni653@gmail.com> 1761860341 +0000	commit: candidates and results css updates
+f12dd34d04d4874035d7f9169c014aa3f582e4d1 c9eb265690622e1a76d030a003c71e7f9de40671 kabermedhasni <kabermedhasni653@gmail.com> 1761864549 +0000	commit: add translations but not perfect
+c9eb265690622e1a76d030a003c71e7f9de40671 b5d148e51ec71513ae001f7dee3619a7d6693890 kabermedhasni <kabermedhasni653@gmail.com> 1761866487 +0000	commit: readme file and final changes
+b5d148e51ec71513ae001f7dee3619a7d6693890 d94bbd78e7f0c3e2f0df546276866c676c7397b8 kabermedhasni <kabermedhasni653@gmail.com> 1761867208 +0000	commit: final updates
+d94bbd78e7f0c3e2f0df546276866c676c7397b8 ed4ad04bbcb8345e38d9940873a5ef16acb6a14a kabermedhasni <kabermedhasni653@gmail.com> 1761867936 +0000	commit: database cleanup
