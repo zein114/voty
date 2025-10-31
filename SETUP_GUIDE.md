@@ -52,8 +52,8 @@ cp .env.example .env
 # Edit .env with provided test credentials (see DoraHacks submission notes)
 # Or use existing credentials:
 # OPERATOR_ID=0.0.7103057
-# OPERATOR_KEY_PRIVATE=3030020100300706052b8104000a04220420455d0d08e819e71b576a74a54bb7bae9727f1ab768fb12ce00f54946dda193c3
-# TOPIC_ID=0.0.7116561
+# OPERATOR_KEY_PRIVATE=xxxxxx...
+# TOPIC_ID=0.0.7168101
 ```
 
 ### 5. Start Application (1 minute)
@@ -77,7 +77,7 @@ php -S localhost:8000
    - **Admin**: Use admin credentials from DoraHacks submission
 3. Select an active election
 4. Cast a vote
-5. Check vote on Hedera: [https://testnet.mirrornode.hedera.com/api/v1/topics/0.0.7116561/messages](https://testnet.mirrornode.hedera.com/api/v1/topics/0.0.7116561/messages)
+5. Check vote on Hedera: [https://testnet.mirrornode.hedera.com/api/v1/topics/0.0.7116561/messages](https://testnet.mirrornode.hedera.com/api/v1/topics/0.0.7168101/messages)
 
 ## Troubleshooting
 
@@ -126,7 +126,7 @@ PHP Frontend + APIs
     ↓
 Node.js Hedera API (localhost:3000)
     ↓
-Hedera Testnet (HCS Topic: 0.0.7116561)
+Hedera Testnet (HCS Topic: 0.0.7168101)
     ↓
 Mirror Node (Public Verification)
 ```
